@@ -5,7 +5,7 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 		System.out.println("Hi");
 		System.out.println("Sherman is shabi");
-		System.out.println("Rennon");
+		System.out.println("Rennon is a guy");
 	}
 
 }
