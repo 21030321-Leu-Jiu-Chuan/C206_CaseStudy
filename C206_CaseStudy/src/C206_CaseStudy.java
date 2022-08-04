@@ -8,7 +8,7 @@ public class C206_CaseStudy {
 		System.out.println("Sherman is shabi");
 		System.out.println("Rennon");
 
-		System.out.println("Jiu Ch");
+		System.out.println("Jiu C");
 
 	}
 
