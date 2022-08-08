@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /*
  * I declare that this code was written by me. 
  * I do not copy or allow others to copy my code. 
@@ -14,7 +14,7 @@
  * @author 21011378
  *
  */
-=======
+
 
 /**
  * I declare that this code was written by me.
@@ -27,4 +27,7 @@
 //github.com/21030321-Leu-Jiu-Chuan/C206_CaseStudy.git
 public class MenuItem {
 
+	
+	
+	
 }
