@@ -16,6 +16,7 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 		
 		ArrayList<LunchBox> LunchBoxList = new ArrayList<LunchBox>();
+		ArrayList<MenuItem> MenuItemList = new ArrayList<MenuItem>();
 	int option = -1;
 
 		while (option != OPTION_QUIT) {
@@ -24,6 +25,18 @@ public class C206_CaseStudy {
 			option = Helper.readInt("Enter an option > ");
 
 			if (option == OPTION_MenuItem) {
+				C206_CaseStudy.Menu_item_menu();
+				int Menu_item_option = Helper.readInt("Enter option to select service type > ");
+				if (Menu_item_option == 1) {
+					//view
+				}
+				else if (Menu_item_option == 2) {
+					//Add
+				}
+				else if(Menu_item_option == 3) {
+					//Delete
+				}
+				
 				
 			} else if (option == OPTION_LunchBox) {
 						
@@ -65,7 +78,7 @@ public class C206_CaseStudy {
 	}
 	
 	public static void menu() {
-		C206_CaseStudy.setHeader("Luch Box APP");
+		C206_CaseStudy.setHeader("Lunch Box APP");
 		System.out.println("1. Menu Items");
 		System.out.println("2. Lunch Box");
 		System.out.println("3. Order Bill");
@@ -89,7 +102,35 @@ public class C206_CaseStudy {
 	
 	
 	//================================= Option 1 Menu item =================================
-	//================================= Option 2 LunchBox ADD=================================
+	public static void Menu_item_menu() {
+		System.out.println("1. View Menu item");
+		System.out.println("2. Add Menu item");
+		System.out.println("3. De Menu item");
+	}
+	public static void Menu_item_category_menu() {
+		System.out.println("1. Western Cuisine");
+		System.out.println("2. Asian Cuisine");
+		System.out.println("3. Vegetarian Cuisine");
+	}
+	
+	//================================= Option 1 Menu item (View) =================================
+	public static String retrieveAllMenuItem(ArrayList<MenuItem> MenuItemList) {
+		String output = "";
+		for(int i = 0; i < MenuItemList.size();i++) {
+			output += String.format("%-94s\n", MenuItemList.get(i).toString());
+		}
+		return output;
+	}
+	public void ViewMenuItem(ArrayList<MenuItem> MenuItemList) {
+		C206_CaseStudy.setHeader("Menu Item LIST");
+		String output = String.format("%-20s %-20s %-20s %-20s\n", "ID", "Description","Category", "Price" );
+		output += retrieveAllMenuItem(MenuItemList);
+		System.out.println(output);
+	}
+	//================================= Option 1 Menu item (ADD) =================================
+	//================================= Option 1 Menu item (Delete)=================================
+	
+	//================================= Option 2 LunchBox (ADD)=================================
 	
 	public static void lunch_box_menu() {
 		System.out.println("1. Add lunch box Order");
@@ -118,7 +159,7 @@ public class C206_CaseStudy {
 		LunchBoxList.add(lb);
 		
 	}
-	//================================= Option 2 LunchBox View=================================
+	//================================= Option 2 LunchBox (View)=================================
 	public static String retrieveAllLunchBoxOrder(ArrayList<LunchBox> LunchBoxList) {
 		String output = "";
 
@@ -135,7 +176,7 @@ public class C206_CaseStudy {
 		 output += retrieveAllLunchBoxOrder(LunchBoxList);	
 		System.out.println(output);
 	}
-	//================================= Option 2 LunchBox Delete=================================
+	//================================= Option 2 LunchBox (Delete)=================================
 	public static void deleteLunchBoxOrder(ArrayList<LunchBox> LunchBoxList) {
 		boolean isDelete=false;
 		String deleteID=Helper.readString("Enter the Lunch Box ID you want to delete>");
@@ -143,13 +184,11 @@ public class C206_CaseStudy {
 			if(deleteID==LunchBoxList.get(i).getLunch_box_id()) {
 				LunchBoxList.remove(i);
 				System.out.println("Remove Successfully");
-				isDelete=true;
 			}else {
 				System.out.println("Please Insert a valid Lunch Box ID");
 			}
-			
+			isDelete=true;
 		}
-		
 	}
 	//================================= Option 3 Order Bill =================================
 	//================================= Option 4 Account =================================
