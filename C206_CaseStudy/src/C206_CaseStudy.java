@@ -37,18 +37,18 @@ public class C206_CaseStudy {
 				//ResourceCentre.setHeader("ADD");			
 				lunch_box_menu();
 				
-				int itemType = Helper.readInt("Enter option to select service type > ");
+				int lunchbox_item = Helper.readInt("Enter option to select service type > ");
 
-				if (itemType == 1) {
+				if (lunchbox_item == 1) {
 					
 					LunchBox lb = addLunchBox();
 					C206_CaseStudy.addCamcorder(LunchBoxList, lb);
 					System.out.println("Lunch Box Order added");
 
-				} else if (itemType == 2) {
+				} else if (lunchbox_item == 2) {
 					C206_CaseStudy.viewAllLunchBoxOrder(LunchBoxList);
 
-				}else if (itemType == 3) {
+				}else if (lunchbox_item == 3) {
 						
 					
 				} else {
