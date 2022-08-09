@@ -20,7 +20,7 @@ public class C206_CaseStudy {
 		MenuItemList.add(new MenuItem("W001","Western", "ChickenChop", 30));
 		LunchBoxList.add(new LunchBox("LB001","Western",2,"2022-01-01"));
 		
-		int option = 0;
+		int option = -1;
 
 		while (option != OPTION_QUIT) {
 
@@ -55,7 +55,7 @@ public class C206_CaseStudy {
 					System.out.println("Invalid type");
 				}
 
-			}/* else if (option == OPTION_Order_bill) {
+			}else if (option == OPTION_Order_bill) {
 				// Loan item
 				//ResourceCentre.setHeader("LOAN");			
 				//itemTypeMenu();
@@ -96,7 +96,7 @@ public class C206_CaseStudy {
 			}else {
 				System.out.println("Invalid option");
 			}
-*/
+
 		}
 
 	}
