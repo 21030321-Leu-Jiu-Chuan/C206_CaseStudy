@@ -34,7 +34,7 @@ public class C206_CaseStudy {
 					
 					LunchBox lb = addLunchBox();
 					C206_CaseStudy.insertLunchBox(LunchBoxList, lb);
-					System.out.println("Lunch Box Order adde");
+					System.out.println("Lunch Box Order added");
 
 				} else if (lunchbox_item == 2) {
 					C206_CaseStudy.viewAllLunchBoxOrder(LunchBoxList);
