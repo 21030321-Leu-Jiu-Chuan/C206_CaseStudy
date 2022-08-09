@@ -178,12 +178,13 @@ public class C206_CaseStudy {
 	}
 	//================================= Option 2 LunchBox (Delete)=================================
 	public static void deleteLunchBoxOrder(ArrayList<LunchBox> LunchBoxList) {
-		boolean isDelete=false;
+		
 		String deleteID=Helper.readString("Enter the Lunch Box ID you want to delete>");
 		for (int i = 0; i < LunchBoxList.size(); i++) {
-			if(deleteID==LunchBoxList.get(i).getLunch_box_id()) {
+			if(LunchBoxList.get(i).getLunch_box_id()==deleteID) {
 				LunchBoxList.remove(i);
 				System.out.println("Remove Successfully");
+
 			}else {
 				System.out.println("Please Insert a valid Lunch Box ID");
 			}

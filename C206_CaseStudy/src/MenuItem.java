@@ -25,7 +25,7 @@ public class MenuItem {
 	private double Price;
 
 	
-	public MenuItem(String ID, String Category, String menuDescription, double Price) {
+	public MenuItem(String ID,String menuDescription , String Category, double Price) {
 		
 		this.ID = ID;
 		this.Category = Category;
