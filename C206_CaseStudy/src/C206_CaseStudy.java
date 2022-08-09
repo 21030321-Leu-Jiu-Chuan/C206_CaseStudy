@@ -40,7 +40,7 @@ public class C206_CaseStudy {
 					C206_CaseStudy.viewAllLunchBoxOrder(LunchBoxList);
 
 				}else if (lunchbox_item == 3) {
-					deleteLunchBoxOrder(LunchBoxList);	
+					C206_CaseStudy.deleteLunchBoxOrder(LunchBoxList);	
 					
 				} else {
 					System.out.println("Invalid type");
