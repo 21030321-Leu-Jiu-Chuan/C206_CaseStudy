@@ -15,16 +15,16 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<LunchBox> LunchBoxList = new ArrayList<LunchBox>();
-		ArrayList<MenuItem> MenuItemList = new ArrayList<MenuItem>();
+		//ArrayList<MenuItem> MenuItemList = new ArrayList<MenuItem>();
 		
-		MenuItemList.add(new MenuItem("W001","Western", "ChickenChop", 30));
+		//MenuItemList.add(new MenuItem("W001","Western", "ChickenChop", 30));
 		LunchBoxList.add(new LunchBox("LB001","Western",2,"2022-01-01"));
 		
 		int option = -1;
 
 		while (option != OPTION_QUIT) {
 
-			C206_CaseStudy.menu();
+			menu();
 			option = Helper.readInt("Enter an option > ");
 
 			if (option == OPTION_MenuItem) {
