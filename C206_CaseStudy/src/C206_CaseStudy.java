@@ -40,7 +40,7 @@ public class C206_CaseStudy {
 					C206_CaseStudy.viewAllLunchBoxOrder(LunchBoxList);
 
 				}else if (lunchbox_item == 3) {
-					C206_CaseStudy.deleteLunchBoxOrder(LunchBoxList);	
+					deleteLunchBoxOrder(LunchBoxList);	
 					
 				} else {
 					System.out.println("Invalid type");
@@ -143,11 +143,13 @@ public class C206_CaseStudy {
 			if(deleteID==LunchBoxList.get(i).getLunch_box_id()) {
 				LunchBoxList.remove(i);
 				System.out.println("Remove Successfully");
+				isDelete=true;
 			}else {
 				System.out.println("Please Insert a valid Lunch Box ID");
 			}
-			isDelete=true;
+			
 		}
+		
 	}
 	//================================= Option 3 Order Bill =================================
 	//================================= Option 4 Account =================================
