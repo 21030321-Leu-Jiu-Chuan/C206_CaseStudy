@@ -27,12 +27,12 @@ public class C206_CaseStudy {
 			C206_CaseStudy.menu();
 			option = Helper.readInt("Enter an option > ");
 
-			//if (option == OPTION_MenuItem) {
+			if (option == OPTION_MenuItem) {
 				// View all items
 				//ResourceCentre.viewAllCamcorder(camcorderList);
 				//ResourceCentre.viewAllChromebook(chromebookList);
 
-			//} else if (option == OPTION_LunchBox) {
+			} else if (option == OPTION_LunchBox) {
 				// Add a new item
 				//ResourceCentre.setHeader("ADD");			
 				lunch_box_menu();
@@ -55,7 +55,7 @@ public class C206_CaseStudy {
 					System.out.println("Invalid type");
 				}
 
-			}/*else if (option == OPTION_Order_bill) {
+			}else if (option == OPTION_Order_bill) {
 				// Loan item
 				//ResourceCentre.setHeader("LOAN");			
 				//itemTypeMenu();
@@ -97,7 +97,7 @@ public class C206_CaseStudy {
 				System.out.println("Invalid option");
 			}
 
-		}*/
+		}
 
 	}
 	
