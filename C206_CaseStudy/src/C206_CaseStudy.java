@@ -14,11 +14,12 @@ public class C206_CaseStudy {
 	private static final int OPTION_QUIT = 6;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
 		ArrayList<LunchBox> LunchBoxList = new ArrayList<LunchBox>();
 		//ArrayList<MenuItem> MenuItemList = new ArrayList<MenuItem>();
 		
 		//MenuItemList.add(new MenuItem("W001","Western", "ChickenChop", 30));
-		LunchBoxList.add(new LunchBox("LB001","Western",2,"2022-01-01"));
+		//LunchBoxList.add(new LunchBox("LB001","Western",2,"2022-01-01"));
 		
 		int option = -1;
 
@@ -31,21 +32,20 @@ public class C206_CaseStudy {
 				
 			} else if (option == OPTION_LunchBox) {
 						
-				lunch_box_menu();
-				
+				C206_CaseStudy.lunch_box_menu();
 				int lunchbox_item = Helper.readInt("Enter option to select service type > ");
 
 				if (lunchbox_item == 1) {
 					
 					LunchBox lb = addLunchBox();
-					C206_CaseStudy.addCamcorder(LunchBoxList, lb);
+					C206_CaseStudy.insertLunchBox(LunchBoxList, lb);
 					System.out.println("Lunch Box Order added");
 
 				} else if (lunchbox_item == 2) {
 					C206_CaseStudy.viewAllLunchBoxOrder(LunchBoxList);
 
 				}else if (lunchbox_item == 3) {
-						
+					C206_CaseStudy.deleteLunchBoxOrder(LunchBoxList);	
 					
 				} else {
 					System.out.println("Invalid type");
@@ -118,7 +118,7 @@ public class C206_CaseStudy {
 		return lb;
 		
 	}
-	public static void addCamcorder(ArrayList<LunchBox> LunchBoxList, LunchBox lb) {
+	public static void insertLunchBox(ArrayList<LunchBox> LunchBoxList, LunchBox lb) {
 		
 		LunchBoxList.add(lb);
 		
@@ -141,7 +141,19 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 	//================================= Option 2 LunchBox Delete=================================
-	
+	public static void deleteLunchBoxOrder(ArrayList<LunchBox> LunchBoxList) {
+		boolean isDelete=false;
+		String deleteID=Helper.readString("Enter the Lunch Box ID you want to delete>");
+		for (int i = 0; i < LunchBoxList.size(); i++) {
+			if(deleteID==LunchBoxList.get(i).getLunch_box_id()) {
+				LunchBoxList.remove(i);
+				System.out.println("Remove Successfully");
+			}else {
+				System.out.println("Please Insert a valid Lunch Box ID");
+			}
+			isDelete=true;
+		}
+	}
 	//================================= Option 3 Order Bill =================================
 	//================================= Option 4 Account =================================
 	//================================= Option 5 Monthly Menu =================================
