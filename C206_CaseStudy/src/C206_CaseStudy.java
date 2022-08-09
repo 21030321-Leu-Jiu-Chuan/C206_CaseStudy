@@ -55,7 +55,7 @@ public class C206_CaseStudy {
 					System.out.println("Invalid type");
 				}
 
-			} else if (option == OPTION_Order_bill) {
+			}/* else if (option == OPTION_Order_bill) {
 				// Loan item
 				//ResourceCentre.setHeader("LOAN");			
 				//itemTypeMenu();
@@ -96,7 +96,7 @@ public class C206_CaseStudy {
 			}else {
 				System.out.println("Invalid option");
 			}
-
+*/
 		}
 
 	}
