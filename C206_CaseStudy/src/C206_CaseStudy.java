@@ -28,13 +28,9 @@ public class C206_CaseStudy {
 			option = Helper.readInt("Enter an option > ");
 
 			if (option == OPTION_MenuItem) {
-				// View all items
-				//ResourceCentre.viewAllCamcorder(camcorderList);
-				//ResourceCentre.viewAllChromebook(chromebookList);
-
+				
 			} else if (option == OPTION_LunchBox) {
-				// Add a new item
-				//ResourceCentre.setHeader("ADD");			
+						
 				lunch_box_menu();
 				
 				int lunchbox_item = Helper.readInt("Enter option to select service type > ");
@@ -56,43 +52,15 @@ public class C206_CaseStudy {
 				}
 
 			}else if (option == OPTION_Order_bill) {
-				// Loan item
-				//ResourceCentre.setHeader("LOAN");			
-				//itemTypeMenu();
-				
-				int itemType = Helper.readInt("Enter option to select item type > ");
-
-				if (itemType == 1) {
-					// Loan camcorder
-					
-				} else if (itemType == 2) {
-					// Loan Chromebook
-				
-				} else {
-					System.out.println("Invalid type");
-				}
+			
 
 			} else if (option == OPTION_Account) {
-				// Return item
-				//ResourceCentre.setHeader("RETURN");				
-				//itemTypeMenu();
+		
+			}else if (option == OPTION_Monthly_Menu){
 				
-				 int itemType = Helper.readInt("Enter option to select item type > ");
-				if (itemType == 1) {
-					// Return camcorder
-				
-				} else if (itemType == 2) {
-					// Return Chromebook
-					
-				} else {
-					System.out.println("Invalid type");
-				}
-
-			} else if (option == OPTION_QUIT) {
-				System.out.println("Bye! Have a great time!");
 			} 
-			else if (option == OPTION_Monthly_Menu){
-				
+			else if (option == OPTION_QUIT) {
+				System.out.println("Bye! Have a great time!");
 			}else {
 				System.out.println("Invalid option");
 			}
