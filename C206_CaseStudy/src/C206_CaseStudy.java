@@ -77,7 +77,7 @@ public class C206_CaseStudy {
 				//ResourceCentre.setHeader("RETURN");				
 				//itemTypeMenu();
 				
-				int itemType = Helper.readInt("Enter option to select item type > ");
+				 int itemType = Helper.readInt("Enter option to select item type > ");
 				if (itemType == 1) {
 					// Return camcorder
 				
