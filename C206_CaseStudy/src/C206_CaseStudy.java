@@ -16,12 +16,7 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 		
 		ArrayList<LunchBox> LunchBoxList = new ArrayList<LunchBox>();
-		//ArrayList<MenuItem> MenuItemList = new ArrayList<MenuItem>();
-		
-		//MenuItemList.add(new MenuItem("W001","Western", "ChickenChop", 30));
-		//LunchBoxList.add(new LunchBox("LB001","Western",2,"2022-01-01"));
-		
-		int option = -1;
+	int option = -1;
 
 		while (option != OPTION_QUIT) {
 
@@ -39,7 +34,7 @@ public class C206_CaseStudy {
 					
 					LunchBox lb = addLunchBox();
 					C206_CaseStudy.insertLunchBox(LunchBoxList, lb);
-					System.out.println("Lunch Box Order added");
+					System.out.println("Lunch Box Order adde");
 
 				} else if (lunchbox_item == 2) {
 					C206_CaseStudy.viewAllLunchBoxOrder(LunchBoxList);
@@ -158,5 +153,11 @@ public class C206_CaseStudy {
 	//================================= Option 4 Account =================================
 	//================================= Option 5 Monthly Menu =================================
 	
+
 	
 	}
+	
+	
+
+
+

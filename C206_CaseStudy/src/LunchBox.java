@@ -17,15 +17,17 @@ public class LunchBox {
 
 	private String lunch_box_id;
 	private int amount_of_order;
-	private double price ;
+	//private double price ;
 	private String description;
+	private String date;
 	
 	
-	public LunchBox(String lunch_box_id,int amount_of_order,double price,String description) {
+	public LunchBox(String lunch_box_id,String description,int amount_of_order,String date) {
 		this.amount_of_order=amount_of_order;
 		this.lunch_box_id=lunch_box_id;
 		this.description=description;
-		this.price=price;
+		this.date=date;
+		//this.price=price;
 	}
 
 
@@ -49,7 +51,7 @@ public class LunchBox {
 	}
 
 
-	public double getPrice() {
+	/*public double getPrice() {
 		return price;
 	}
 
@@ -57,7 +59,7 @@ public class LunchBox {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
+*/
 
 	public String getDescription() {
 		return description;
@@ -68,6 +70,21 @@ public class LunchBox {
 		this.description = description;
 	}
 	
+	public String getDate() {
+		return date;
+	}
+
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+
+	public String toString(){
+		String output = super.toString();
+		output=String.format("%-20s %-20s %-20d %-20s", lunch_box_id , description,amount_of_order,date);
+		return output;
+	}
 
 	
 }
