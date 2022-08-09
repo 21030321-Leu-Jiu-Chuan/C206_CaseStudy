@@ -105,7 +105,7 @@ public class C206_CaseStudy {
 	public static void Menu_item_menu() {
 		System.out.println("1. View Menu item");
 		System.out.println("2. Add Menu item");
-		System.out.println("3. De Menu item");
+		System.out.println("3. Delete Menu item");
 	}
 	public static void Menu_item_category_menu() {
 		System.out.println("1. Western Cuisine");
