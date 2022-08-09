@@ -14,7 +14,11 @@ public class C206_CaseStudy {
 	private static final int OPTION_QUIT = 6;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ArrayList<LunchBox> camcorderList = new ArrayList<LunchBox>();
+		ArrayList<LunchBox> LunchBoxList = new ArrayList<LunchBox>();
+		ArrayList<MenuItem> MenuItemList = new ArrayList<MenuItem>();
+		
+		MenuItemList.add(new MenuItem("W001","Western", "ChickenChop", 30));
+		LunchBoxList.add(new LunchBox("LB001","Western",2,"2022-01-01"));
 		
 		int option = 0;
 
@@ -31,22 +35,22 @@ public class C206_CaseStudy {
 			} else if (option == OPTION_LunchBox) {
 				// Add a new item
 				//ResourceCentre.setHeader("ADD");			
-				//itemTypeMenu();
+				lunch_box_menu();
 				
-				int itemType = Helper.readInt("Enter option to select item type > ");
+				int itemType = Helper.readInt("Enter option to select service type > ");
 
 				if (itemType == 1) {
-					// Add a camcorder
-					//Camcorder cc = inputCamcorder();
-					///ResourceCentre.addCamcorder(camcorderList, cc);
-					//System.out.println("Camcorder added");
+					
+					LunchBox lb = addLunchBox();
+					C206_CaseStudy.addCamcorder(LunchBoxList, lb);
+					System.out.println("Lunch Box Order added");
 
 				} else if (itemType == 2) {
-					// Add a Chromebook
-					//Chromebook cb = inputChromebook();
-					//ResourceCentre.addChromebook(chromebookList, cb);
-					//System.out.println("Chromebook added");
+					C206_CaseStudy.viewAllLunchBoxOrder(LunchBoxList);
 
+				}else if (itemType == 3) {
+						
+					
 				} else {
 					System.out.println("Invalid type");
 				}
@@ -118,6 +122,61 @@ public class C206_CaseStudy {
 		Helper.line(80, "-");
 	}
 	
+	
+	
+	
+	//================================= Option 1 Menu item =================================
+	//================================= Option 2 LunchBox ADD=================================
+	
+	public static void lunch_box_menu() {
+		System.out.println("1. Add lunch box Order");
+		System.out.println("2. View Lunch Box Order");
+		System.out.println("3. Delete Lunch Box Order");
+	}
+	public static void lunch_box_category_menu() {
+		System.out.println("1. Western Cuisine");
+		System.out.println("2. Asian Cuisine");
+		System.out.println("3. Vegetarian Cuisine");
+	}
+	
+	public static LunchBox addLunchBox() {
+		String lunch_box_id = Helper.readString("Enter Lunch Box ID > ");
+		String description = Helper.readString("Enter description > ");
+		int amount = Helper.readInt("Enter amount of order > ");
+		String date=Helper.readString("Enter the date >");
+		//double price=;
+
+		LunchBox lb= new LunchBox(lunch_box_id, description, amount,date);
+		return lb;
+		
+	}
+	public static void addCamcorder(ArrayList<LunchBox> LunchBoxList, LunchBox lb) {
+		
+		LunchBoxList.add(lb);
+		
+	}
+	//================================= Option 2 LunchBox View=================================
+	public static String retrieveAllLunchBoxOrder(ArrayList<LunchBox> LunchBoxList) {
+		String output = "";
+
+		for (int i = 0; i < LunchBoxList.size(); i++) {
+
+			output += String.format("%-84s\n", LunchBoxList.get(i).toString());
+					
+		}
+		return output;
+	}
+	public static void viewAllLunchBoxOrder(ArrayList<LunchBox> LunchBoxList) {
+		C206_CaseStudy.setHeader("Lunch Box Order LIST");
+		String output = String.format("%-20s %-20s %-20s %-20s\n", "Lunch Box ID", "DESCRIPTION","Amount of Order","Order Date" );
+		 output += retrieveAllLunchBoxOrder(LunchBoxList);	
+		System.out.println(output);
+	}
+	//================================= Option 2 LunchBox Delete=================================
+	
+	//================================= Option 3 Order Bill =================================
+	//================================= Option 4 Account =================================
+	//================================= Option 5 Monthly Menu =================================
 	
 	
 	}
