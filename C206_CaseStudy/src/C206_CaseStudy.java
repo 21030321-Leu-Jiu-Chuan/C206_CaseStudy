@@ -17,11 +17,20 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+
+
 		ArrayList<LunchBox> LunchBoxList = new ArrayList<LunchBox>();
 		ArrayList<MenuItem> MenuItemList = new ArrayList<MenuItem>();
+
+		
+		LunchBoxList.add(new LunchBox("LB001", "Western", 30,"2022-09-09"));
+		
+
+
 		ArrayList<Account> AccountList = new ArrayList<Account>();
 
 		int option = -1;
+
 
 		while (option != OPTION_QUIT) {
 
@@ -112,17 +121,13 @@ public class C206_CaseStudy {
 
 	}
 
-	/**
-	 * @param string
-	 */
 	public static void setHeader(String header) {
 		Helper.line(80, "-");
 		System.out.println(header);
 		Helper.line(80, "-");
 	}
 
-	// ================================= Option 1 Menu item
-	// =================================
+	// ================================= Option 1 Menu item =================================
 	public static void Menu_item_menu() {
 		System.out.println("1. View Menu item");
 		System.out.println("2. Add Menu item");
@@ -135,8 +140,7 @@ public class C206_CaseStudy {
 		System.out.println("3. Vegetarian Cuisine");
 	}
 
-	// ================================= Option 1 Menu item (View)
-	// =================================
+	// ================================= Option 1 Menu item (View)=================================
 	public static String retrieveAllMenuItem(ArrayList<MenuItem> MenuItemList) {
 		String output = "";
 		for (int i = 0; i < MenuItemList.size(); i++) {
@@ -154,8 +158,7 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 
-	// ================================= Option 1 Menu item (ADD)
-	// =================================
+	// ================================= Option 1 Menu item (ADD)=================================
 	public static MenuItem InputMenuItem() {
 		String id = Helper.readString("Enter Menu ID > ");
 		String description = Helper.readString("Enter description > ");
@@ -170,8 +173,7 @@ public class C206_CaseStudy {
 		MenuItemList.add(MI);
 	}
 
-	// ================================= Option 1 Menu item
-	// (Delete)=================================
+	// ================================= Option 1 Menu item(Delete)=================================
 
 	public static void deleteMenuItem(ArrayList<MenuItem> MenuItemList) {
 		String id = Helper.readString("Enter the ID you want to delete > ");
@@ -186,8 +188,7 @@ public class C206_CaseStudy {
 
 	}
 
-	// ================================= Option 2 LunchBox
-	// (ADD)=================================
+	// ================================= Option 2 LunchBox(ADD)=================================
 
 	public static void lunch_box_menu() {
 		System.out.println("1. Add lunch box Order");
@@ -202,25 +203,25 @@ public class C206_CaseStudy {
 	}
 
 	public static LunchBox addLunchBox() {
+
 		String lunch_box_id = Helper.readString("Enter Lunch Box ID > ");
 		String description = Helper.readString("Enter description > ");
 		int amount = Helper.readInt("Enter amount of order > ");
 		String date = Helper.readString("Enter the date >");
 		// double price=;
 
-		LunchBox lb = new LunchBox(lunch_box_id, description, amount, date);
+
+		LunchBox lb= new LunchBox(lunch_box_id, description, amount,date);
+
 		return lb;
 
 	}
-
 	public static void insertLunchBox(ArrayList<LunchBox> LunchBoxList, LunchBox lb) {
-
 		LunchBoxList.add(lb);
 
 	}
 
-	// ================================= Option 2 LunchBox
-	// (View)=================================
+	// ================================= Option 2 LunchBox(View)=================================
 	public static String retrieveAllLunchBoxOrder(ArrayList<LunchBox> LunchBoxList) {
 		String output = "";
 
@@ -240,27 +241,28 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 
-	// ================================= Option 2 LunchBox
-	// (Delete)=================================
+	// ================================= Option 2 LunchBox (Delete)=================================
 	public static void deleteLunchBoxOrder(ArrayList<LunchBox> LunchBoxList) {
 
 		String deleteID = Helper.readString("Enter the Lunch Box ID you want to delete>");
 		for (int i = 0; i < LunchBoxList.size(); i++) {
-			if (LunchBoxList.get(i).getLunch_box_id() == deleteID) {
+
+			if(LunchBoxList.get(i).getLunch_box_id().equalsIgnoreCase(deleteID)) {
+
+			
+
 				LunchBoxList.remove(i);
 				System.out.println("Remove Successfully");
-
-			} else {
-				System.out.println("Please Insert a valid Lunch Box ID");
 			}
-
-		}
+			 else {
+				System.out.println("Please Insert a valid Lunch Box ID");
+			
+			}
+			
 	}
-
-	// ================================= Option 3 Order Bill
-	// =================================
-	// ================================= Option 4 Account (ADD)
-	// =================================
+	}
+	// ================================= Option 3 Order Bill =================================
+	// ================================= Option 4 Account (ADD)=================================
 	public static void Account_menu() {
 		System.out.println("1. Add User Account");
 		System.out.println("2. View User Account");
@@ -303,13 +305,12 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 
-	// ================================= Option 4 Account (DELETE)
-	// =================================
+	// ================================= Option 4 Account (DELETE) =================================
 	public static void deleteUserAccount(ArrayList<Account> AccountList) {
 
 		String deleteID = Helper.readString("Enter the User Account ID you want to delete>");
 		for (int i = 0; i < AccountList.size(); i++) {
-			if (AccountList.get(i).getAcc_id() == deleteID) {
+			if (AccountList.get(i).getAcc_id().equalsIgnoreCase(deleteID)) {
 				AccountList.remove(i);
 				System.out.println("Remove Successfully");
 
@@ -319,7 +320,6 @@ public class C206_CaseStudy {
 
 		}
 	}
-	// ================================= Option 5 Monthly Menu
-	// =================================
+	// ================================= Option 5 Monthly Menu =================================
 
 }
