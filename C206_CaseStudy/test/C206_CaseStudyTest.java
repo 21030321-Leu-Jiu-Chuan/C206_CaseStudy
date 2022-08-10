@@ -48,7 +48,7 @@ public class C206_CaseStudyTest {
 		
 		C206_CaseStudy.insertLunchBox(LunchBoxList, lb2);
 		
-		assertEquals("Test that Camcorder arraylist size is 3?", 2, LunchBoxList.size());
+		assertEquals("Test that Camcorder arraylist size is 2?", 2, LunchBoxList.size());
 		assertSame("Test that Camcorder is added same as 3rd item of the list?", lb2, LunchBoxList.get(1));
 		
 	}
@@ -70,8 +70,8 @@ public class C206_CaseStudyTest {
 		//test if the expected output string same as the list of camcorders retrieved from the SourceCentre
 		allLunchBoxOrder= C206_CaseStudy.retrieveAllLunchBoxOrder(LunchBoxList);
 
-		testOutput = String.format("%-20s %-20s %-20d %-20s\n","LB001","Western", 40,"2022-09-09");
-		testOutput += String.format("%-20s %-20s %-20d %-20s\n","LB002","Asian", 20,"2022-09-09");
+		testOutput = String.format("%-20s %-20s %-20d %-20s \n","LB001","Western", 40,"2022-09-09");
+		testOutput += String.format("%-20s %-20s %-20d %-20s \n","LB002","Asian", 20,"2022-09-09");
 	
 		assertEquals("Check that ViewAllunchBoxOrderlist", testOutput, allLunchBoxOrder);
 		
