@@ -31,12 +31,18 @@ public class C206_CaseStudy {
 				int Menu_item_option = Helper.readInt("Enter option to select service type > ");
 				if (Menu_item_option == 1) {
 					//view
+					C206_CaseStudy.ViewMenuItem(MenuItemList);
 				}
 				else if (Menu_item_option == 2) {
 					//Add
+					 MenuItem MI = InputMenuItem();
+					 C206_CaseStudy.addMenuItem(MenuItemList, MI);
+					 System.out.println("Menu Item added");
+				
 				}
 				else if(Menu_item_option == 3) {
 					//Delete
+					C206_CaseStudy.deleteMenuItem(MenuItemList);
 				}
 				
 				
@@ -119,18 +125,52 @@ public class C206_CaseStudy {
 	public static String retrieveAllMenuItem(ArrayList<MenuItem> MenuItemList) {
 		String output = "";
 		for(int i = 0; i < MenuItemList.size();i++) {
-			output += String.format("%-94s\n", MenuItemList.get(i).toString());
+			
+				output += String.format("%-94s\n", MenuItemList.get(i).toString());
+			
+			
 		}
 		return output;
 	}
-	public void ViewMenuItem(ArrayList<MenuItem> MenuItemList) {
+	
+	public static void ViewMenuItem(ArrayList<MenuItem> MenuItemList) {
 		C206_CaseStudy.setHeader("Menu Item LIST");
 		String output = String.format("%-20s %-20s %-20s %-20s\n", "ID", "Description","Category", "Price" );
 		output += retrieveAllMenuItem(MenuItemList);
 		System.out.println(output);
 	}
 	//================================= Option 1 Menu item (ADD) =================================
+	public static MenuItem InputMenuItem() {
+		String id = Helper.readString("Enter Menu ID > ");
+		String description = Helper.readString("Enter description > ");
+		String category = Helper.readString("Enter Category > ");	
+		double Price = Helper.readDouble("Enter the price of the item > ");
+		
+		MenuItem MI = new MenuItem(id, description, category, Price);
+		return MI;
+	}
+	public static void addMenuItem(ArrayList<MenuItem> MenuItemList, MenuItem MI) {
+		MenuItemList.add(MI);
+	}
+	
+	
 	//================================= Option 1 Menu item (Delete)=================================
+	
+	public static void deleteMenuItem(ArrayList<MenuItem>MenuItemList) {
+		String id = Helper.readString("Enter the ID you want to delete > ");
+		for (int i = 0; i < MenuItemList.size(); i++) {
+			if(MenuItemList.get(i).getID().equalsIgnoreCase(id)) {
+				MenuItemList.remove(i);
+				System.out.println("Remove Successfully!");
+			}
+			else {
+				System.out.println("Nothing to delete");
+			}
+		}
+		
+	}
+	
+	
 	
 	//================================= Option 2 LunchBox (ADD)=================================
 	
