@@ -1,4 +1,5 @@
 
+import java.awt.MenuItem;
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
@@ -99,6 +100,22 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == OPTION_Monthly_Menu) {
+				C206_CaseStudy.Monthly_Menu_menu();
+				int Monthly_Menu_option = Helper.readInt("Enter option to select service type > ");
+				if (Monthly_Menu_option == 1) {
+					// Create
+					MonthlyMenu mm = CreateMonthlyMenu
+					C206_CaseStudy.CreateMonthlyMenu(MonthlyMenuList, mm);
+					System.out.println("Monthly Menu Created!");
+				} else if (Monthly_Menu_option == 2) {
+					// View
+					C206_CaseStudy.ViewMonthlyMenu(MonthlyMenuList);
+
+				} else if (Monthly_Menu_option == 3) {
+					// Delete
+					C206_CaseStudy.deleteMonthlyMenu(MonthlyMenuList);
+					System.out.println("Monthly Menu Deleted!");
+				}
 
 			} else if (option == OPTION_QUIT) {
 				System.out.println("Bye! Have a great time!");
@@ -161,12 +178,12 @@ public class C206_CaseStudy {
 
 	// ================================= Option 1 Menu item (ADD)=================================
 	public static MenuItem InputMenuItem() {
-		String id = Helper.readString("Enter Menu ID > ");
+		String ID = Helper.readString("Enter Menu ID > ");
 		String description = Helper.readString("Enter description > ");
 		String category = Helper.readString("Enter Category > ");
 		double Price = Helper.readDouble("Enter the price of the item > ");
 
-		MenuItem MI = new MenuItem(id, description, category, Price);
+		MenuItem MI = new MenuItem(ID, description, category, Price);
 		return MI;
 	}
 
@@ -320,6 +337,58 @@ public class C206_CaseStudy {
 
 		}
 	}
-	// ================================= Option 5 Monthly Menu =================================
+	// ================================= Option 5 Monthly Menu  =================================
+	public static void Monthly_Menu_menu() {
+		System.out.println("1. Create new Monthly Menu");
+		System.out.println("2. View Monthly Menu");
+		System.out.println("3. Delete Monthly Menu");
+	}
+	// ================================= Option 5 Monthly Menu (Create) =================================
+	public static MonthlyMenu CreateMonthlyMenu(ArrayList<MenuItem> menuItemList) {
 
+		String Monthly_Menu_id = Helper.readString("Enter Monthly Menu ID > ");
+		String description = Helper.readString("Enter description > ");
+		String category = Helper.readString("Enter Category > ");
+		double price = Helper.readDouble("Enter amount for the menu > ");
+
+		MonthlyMenu mm= new MonthlyMenu(Monthly_Menu_id, description, category, price );
+
+		return mm;
+}
+	public static void CreateMonthlyMenu (ArrayList<MonthlyMenu> MonthlyMenuList, MonthlyMenu mm) {
+		MonthlyMenuList.add(mm);
+		
+	}
+
+//================================= Option 5 Monthly Menu (View) =================================
+	public static String GetMonthlyMenu(ArrayList<MonthlyMenu> MonthlyMenuList) {
+		String output = "";
+
+		for (int i = 0; i < MonthlyMenuList.size(); i++) {
+
+			output += String.format("%-84s\n", MonthlyMenuList.get(i).toString());
+
+		}
+		return output;
+	}
+	
+	public static void ViewMonthlyMenu(ArrayList<MonthlyMenu> MonthlyMenuList) {
+		C206_CaseStudy.setHeader("Monthly Menu");
+		String output = String.format("%-20s %-20s %-20s %-20s\n", "ID", "Description", "Category", "Price");
+		output += GetMonthlyMenu(MonthlyMenuList);
+		System.out.println(output);
+	}
+
+//================================= Option 5 Monthly Menu (Delete) =================================
+	public static void deleteMonthlyMenu (ArrayList<MonthlyMenu> MonthlyMenuList) {
+		String deleteMenu = Helper.readString("Enter the Monthly Menu ID you want to delete >");
+		for (int i = 0; i < MonthlyMenuList.size(); i++) {
+			if (MonthlyMenuList.get(i).getMonthlyID().equalsIgnoreCase(deleteMenu)) {
+				MonthlyMenuList.remove(i);
+				System.out.println("Delete Successfully");
+			}else {
+				System.out.println("Please Insert a valid Monthly Menu ID!");
+			}
+		}
+	}
 }
