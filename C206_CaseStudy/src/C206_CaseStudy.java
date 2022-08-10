@@ -22,6 +22,7 @@ public class C206_CaseStudy {
 
 		ArrayList<LunchBox> LunchBoxList = new ArrayList<LunchBox>();
 		ArrayList<MenuItem> MenuItemList = new ArrayList<MenuItem>();
+		ArrayList<MonthlyMenu> MonthlyMenuList = new ArrayList<MonthlyMenu>();
 
 		
 		LunchBoxList.add(new LunchBox("LB001", "Western", 40,"2022-09-09"));
