@@ -91,7 +91,7 @@ public class LunchBox {
 
 	public String toString(){
 		String output = super.toString();
-		output=String.format("%-20s %-20s %-20d %-20s", lunch_box_id , description,amount_of_order,date);
+		output=String.format("%-20s %-20s %-20d %-20s", lunch_box_id ,description,amount_of_order,date);
 		return output;
 	}
 
