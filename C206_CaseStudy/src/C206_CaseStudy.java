@@ -18,6 +18,7 @@ public class C206_CaseStudy {
 		
 		ArrayList<LunchBox> LunchBoxList = new ArrayList<LunchBox>();
 		ArrayList<MenuItem> MenuItemList = new ArrayList<MenuItem>();
+		System.out.println("Sherman is sohai");
 	int option = -1;
 
 		while (option != OPTION_QUIT) {
