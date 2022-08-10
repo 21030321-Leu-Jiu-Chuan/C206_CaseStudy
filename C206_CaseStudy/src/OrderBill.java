@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 /*
  * I declare that this code was written by me. 
  * I do not copy or allow others to copy my code. 
@@ -13,6 +15,33 @@
  * @author 21011378
  *
  */
-public class OrderBill {
+public class OrderBill extends LunchBox{
+	private String BillID;
+	private double total;
+	private String duedate;
+	public OrderBill(String lunch_box_id, String billID,double total, String duedate) {
+		super(lunch_box_id);
+		BillID = billID;
+		this.total = total;
+		this.duedate = duedate;
+	}
+	public String getBillID() {
+		return BillID;
+	}
+	public void setBillID(String billID) {
+		BillID = billID;
+	}
+	public double getTotal() {
+		return total;
+	}
+	public void setTotal(double total) {
+		this.total = total;
+	}
+	public String getDuedate() {
+		return duedate;
+	}
+	public void setDuedate(String duedate) {
+		this.duedate = duedate;
+	}
 
 }

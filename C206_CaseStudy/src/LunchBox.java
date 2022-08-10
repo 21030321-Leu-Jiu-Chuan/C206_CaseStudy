@@ -31,6 +31,13 @@ public class LunchBox {
 		this.date=date;
 		//this.price=price;
 	}
+	
+
+
+	public LunchBox(String lunch_box_id) {
+		this.lunch_box_id = lunch_box_id;
+	}
+
 
 
 	public String getLunch_box_id() {

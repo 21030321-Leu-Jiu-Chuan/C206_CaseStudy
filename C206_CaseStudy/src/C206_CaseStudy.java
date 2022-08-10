@@ -1,5 +1,6 @@
 
-import java.awt.MenuItem;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
@@ -22,11 +23,14 @@ public class C206_CaseStudy {
 
 		ArrayList<LunchBox> LunchBoxList = new ArrayList<LunchBox>();
 		ArrayList<MenuItem> MenuItemList = new ArrayList<MenuItem>();
+<<<<<<< HEAD
 		ArrayList<MonthlyMenu> MonthlyMenuList = new ArrayList<MonthlyMenu>();
+=======
+		ArrayList<OrderBill>BillList=new ArrayList<OrderBill>();
+>>>>>>> branch 'master' of https://github.com/21030321-Leu-Jiu-Chuan/C206_CaseStudy.git
 
 		
-		LunchBoxList.add(new LunchBox("LB001", "Western", 40,"2022-09-09"));
-		LunchBoxList.add(new LunchBox("LB002", "Asian", 30,"2022-09-09"));
+		LunchBoxList.add(new LunchBox("LB001", "Western", 30,"2022-09-09"));
 		
 
 
@@ -79,7 +83,20 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == OPTION_Order_bill) {
-
+				C206_CaseStudy.billMenu();
+				int order_bill_option=Helper.readInt("Enter option to select service type >");
+				if(order_bill_option==1) {
+					C206_CaseStudy.addOrdersBill(LunchBoxList, BillList);	
+				}
+				else if(order_bill_option==2) {
+					C206_CaseStudy.viewOrderBill(BillList);
+				}
+				else if(order_bill_option==3) {
+					C206_CaseStudy.deleteOrderBill(BillList);
+				}
+				else {
+					System.out.println("Invalid service");
+				}
 			} else if (option == OPTION_Account) {
 				C206_CaseStudy.Account_menu();
 				int account_option = Helper.readInt("Enter option to select service type > ");
@@ -101,22 +118,6 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == OPTION_Monthly_Menu) {
-				C206_CaseStudy.Monthly_Menu_menu();
-				int Monthly_Menu_option = Helper.readInt("Enter option to select service type > ");
-				if (Monthly_Menu_option == 1) {
-					// Create
-					MonthlyMenu mm = CreateMonthlyMenu();
-					C206_CaseStudy.CreateMonthlyMenu(MonthlyMenuList, mm);
-					System.out.println("Monthly Menu Created!");
-				} else if (Monthly_Menu_option == 2) {
-					// View
-					C206_CaseStudy.ViewMonthlyMenu(MonthlyMenuList);
-
-				} else if (Monthly_Menu_option == 3) {
-					// Delete
-					C206_CaseStudy.deleteMonthlyMenu(MonthlyMenuList);
-					System.out.println("Monthly Menu Deleted!");
-				}
 
 			} else if (option == OPTION_QUIT) {
 				System.out.println("Bye! Have a great time!");
@@ -179,15 +180,14 @@ public class C206_CaseStudy {
 
 	// ================================= Option 1 Menu item (ADD)=================================
 	public static MenuItem InputMenuItem() {
-		String ID = Helper.readString("Enter Menu ID > ");
+		String id = Helper.readString("Enter Menu ID > ");
 		String description = Helper.readString("Enter description > ");
 		String category = Helper.readString("Enter Category > ");
 		double Price = Helper.readDouble("Enter the price of the item > ");
 
-		MenuItem MI = new MenuItem(ID, description, category, Price);
+		MenuItem MI = new MenuItem(id, description, category, Price);
 		return MI;
 	}
-
 	public static void addMenuItem(ArrayList<MenuItem> MenuItemList, MenuItem MI) {
 		MenuItemList.add(MI);
 	}
@@ -221,7 +221,7 @@ public class C206_CaseStudy {
 		System.out.println("3. Vegetarian Cuisine");
 	}
 
-	public static  LunchBox addLunchBox() {
+	public static LunchBox addLunchBox() {
 
 		String lunch_box_id = Helper.readString("Enter Lunch Box ID > ");
 		String description = Helper.readString("Enter description > ");
@@ -254,7 +254,8 @@ public class C206_CaseStudy {
 
 	public static void viewAllLunchBoxOrder(ArrayList<LunchBox> LunchBoxList) {
 		C206_CaseStudy.setHeader("Lunch Box Order LIST");
-		String output = String.format("%-20s %-20s %-20s %-20s\n", "Lunch Box ID", "DESCRIPTION", "Amount of Order","Order Date");
+		String output = String.format("%-20s %-20s %-20s %-20s\n", "Lunch Box ID", "DESCRIPTION", "Amount of Order",
+				"Order Date");
 		output += retrieveAllLunchBoxOrder(LunchBoxList);
 		System.out.println(output);
 	}
@@ -280,6 +281,54 @@ public class C206_CaseStudy {
 	}
 	}
 	// ================================= Option 3 Order Bill =================================
+	public static void billMenu() {
+		System.out.println("1. Add Order Bill");
+		System.out.println("2. View Order Bill");
+		System.out.println("3. Delete Order Bill");
+	}
+	public static void addOrdersBill(ArrayList<LunchBox>LunchBoxList,ArrayList<OrderBill>BillLists) {
+		double price=7;
+		double total=0;
+		String billID = Helper.readString("Enter Order Bill ID > ");
+		String lunchboxID=Helper.readString("Enter Lunch Box to bill >");
+		String dueDate=Helper.readString("Enter Due Date for Bill >");
+		for(LunchBox a:LunchBoxList) {
+			if(lunchboxID.equalsIgnoreCase(a.getLunch_box_id())) {
+				total=a.getAmount_of_order()*price;
+				BillLists.add(new OrderBill(lunchboxID,billID,total,dueDate));
+			}
+			else {
+				System.out.println("Enter a valid lunchboxID!");
+			}
+		}
+	}
+	public static void viewOrderBill(ArrayList<OrderBill>BillLists) {
+		String output="";
+		output+=String.format("%-20s %-20s %-20s %-20s\n", "Order Bill ID","Lunch Box ID","Total Price","Due Date");
+		for(OrderBill a:BillLists) {
+			output+=String.format("%-20s %-20s %-20.2f %-20s\n",a.getBillID(),a.getLunch_box_id(),a.getTotal(),a.getDuedate());
+		}
+		System.out.println(output);
+	}
+	public static void deleteOrderBill(ArrayList<OrderBill>BillLists) {
+		String ID=Helper.readString("Enter ID to delete >");
+		for (int i = 0; i < BillLists.size(); i++) {
+
+			if(BillLists.get(i).getBillID().equalsIgnoreCase(ID)) {
+
+			
+
+				BillLists.remove(i);
+				System.out.println("Remove Successfully");
+			}
+			 else {
+				System.out.println("Please Insert a valid Order Bill ID");
+			
+			}
+			
+	}
+	}
+	
 	// ================================= Option 4 Account (ADD)=================================
 	public static void Account_menu() {
 		System.out.println("1. Add User Account");
@@ -338,58 +387,6 @@ public class C206_CaseStudy {
 
 		}
 	}
-	// ================================= Option 5 Monthly Menu  =================================
-	public static void Monthly_Menu_menu() {
-		System.out.println("1. Create new Monthly Menu");
-		System.out.println("2. View Monthly Menu");
-		System.out.println("3. Delete Monthly Menu");
-	}
-	// ================================= Option 5 Monthly Menu (Create) =================================
-	public static MonthlyMenu CreateMonthlyMenu() {
+	// ================================= Option 5 Monthly Menu =================================
 
-		String Monthly_Menu_id = Helper.readString("Enter Monthly Menu ID > ");
-		String description = Helper.readString("Enter description > ");
-		String category = Helper.readString("Enter Category > ");
-		double price = Helper.readDouble("Enter amount for the menu > ");
-
-		MonthlyMenu mm= new MonthlyMenu(Monthly_Menu_id, description, category, price );
-
-		return mm;
-}
-	public static void CreateMonthlyMenu (ArrayList<MonthlyMenu> MonthlyMenuList, MonthlyMenu mm) {
-		MonthlyMenuList.add(mm);
-		
-	}
-
-//================================= Option 5 Monthly Menu (View) =================================
-	public static String GetMonthlyMenu(ArrayList<MonthlyMenu> MonthlyMenuList) {
-		String output = "";
-
-		for (int i = 0; i < MonthlyMenuList.size(); i++) {
-
-			output += String.format("%-84s\n", MonthlyMenuList.get(i).toString());
-
-		}
-		return output;
-	}
-	
-	public static void ViewMonthlyMenu(ArrayList<MonthlyMenu> MonthlyMenuList) {
-		C206_CaseStudy.setHeader("Monthly Menu");
-		String output = String.format("%-20s %-20s %-20s %-20s\n", "ID", "Description", "Category", "Price");
-		output += GetMonthlyMenu(MonthlyMenuList);
-		System.out.println(output);
-	}
-
-//================================= Option 5 Monthly Menu (Delete) =================================
-	public static void deleteMonthlyMenu (ArrayList<MonthlyMenu> MonthlyMenuList) {
-		String deleteMonthlyMenu = Helper.readString("Enter the Monthly Menu ID you want to delete >");
-		for (int i = 0; i < MonthlyMenuList.size(); i++) {
-			if (MonthlyMenuList.get(i).getMonthlyID().equalsIgnoreCase(deleteMonthlyMenu)) {
-				MonthlyMenuList.remove(i);
-				System.out.println("Delete Successfully");
-			}else {
-				System.out.println("Please Insert a valid Monthly Menu ID!");
-			}
-		}
-	}
 }
