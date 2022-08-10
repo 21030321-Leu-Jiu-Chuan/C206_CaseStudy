@@ -104,7 +104,7 @@ public class C206_CaseStudy {
 				int Monthly_Menu_option = Helper.readInt("Enter option to select service type > ");
 				if (Monthly_Menu_option == 1) {
 					// Create
-					MonthlyMenu mm = CreateMonthlyMenu
+					MonthlyMenu mm = CreateMonthlyMenu();
 					C206_CaseStudy.CreateMonthlyMenu(MonthlyMenuList, mm);
 					System.out.println("Monthly Menu Created!");
 				} else if (Monthly_Menu_option == 2) {
@@ -344,7 +344,7 @@ public class C206_CaseStudy {
 		System.out.println("3. Delete Monthly Menu");
 	}
 	// ================================= Option 5 Monthly Menu (Create) =================================
-	public static MonthlyMenu CreateMonthlyMenu(ArrayList<MenuItem> menuItemList) {
+	public static MonthlyMenu CreateMonthlyMenu() {
 
 		String Monthly_Menu_id = Helper.readString("Enter Monthly Menu ID > ");
 		String description = Helper.readString("Enter description > ");
@@ -381,9 +381,9 @@ public class C206_CaseStudy {
 
 //================================= Option 5 Monthly Menu (Delete) =================================
 	public static void deleteMonthlyMenu (ArrayList<MonthlyMenu> MonthlyMenuList) {
-		String deleteMenu = Helper.readString("Enter the Monthly Menu ID you want to delete >");
+		String deleteMonthlyMenu = Helper.readString("Enter the Monthly Menu ID you want to delete >");
 		for (int i = 0; i < MonthlyMenuList.size(); i++) {
-			if (MonthlyMenuList.get(i).getMonthlyID().equalsIgnoreCase(deleteMenu)) {
+			if (MonthlyMenuList.get(i).getMonthlyID().equalsIgnoreCase(deleteMonthlyMenu)) {
 				MonthlyMenuList.remove(i);
 				System.out.println("Delete Successfully");
 			}else {
