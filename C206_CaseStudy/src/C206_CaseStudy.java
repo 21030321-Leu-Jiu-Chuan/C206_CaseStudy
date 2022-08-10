@@ -23,7 +23,8 @@ public class C206_CaseStudy {
 		ArrayList<MenuItem> MenuItemList = new ArrayList<MenuItem>();
 
 		
-		LunchBoxList.add(new LunchBox("LB001", "Western", 30,"2022-09-09"));
+		LunchBoxList.add(new LunchBox("LB001", "Western", 40,"2022-09-09"));
+		LunchBoxList.add(new LunchBox("LB002", "Asian", 30,"2022-09-09"));
 		
 
 
@@ -202,7 +203,7 @@ public class C206_CaseStudy {
 		System.out.println("3. Vegetarian Cuisine");
 	}
 
-	public static LunchBox addLunchBox() {
+	public static  LunchBox addLunchBox() {
 
 		String lunch_box_id = Helper.readString("Enter Lunch Box ID > ");
 		String description = Helper.readString("Enter description > ");
@@ -235,8 +236,7 @@ public class C206_CaseStudy {
 
 	public static void viewAllLunchBoxOrder(ArrayList<LunchBox> LunchBoxList) {
 		C206_CaseStudy.setHeader("Lunch Box Order LIST");
-		String output = String.format("%-20s %-20s %-20s %-20s\n", "Lunch Box ID", "DESCRIPTION", "Amount of Order",
-				"Order Date");
+		String output = String.format("%-20s %-20s %-20s %-20s\n", "Lunch Box ID", "DESCRIPTION", "Amount of Order","Order Date");
 		output += retrieveAllLunchBoxOrder(LunchBoxList);
 		System.out.println(output);
 	}
