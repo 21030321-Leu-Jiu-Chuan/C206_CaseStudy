@@ -126,7 +126,7 @@ public class C206_CaseStudy {
 		String output = "";
 		for(int i = 0; i < MenuItemList.size();i++) {
 			
-				output += String.format("%-94s\n", MenuItemList.get(i).toString());
+				output += String.format("%-84s\n", MenuItemList.get(i).toString());
 			
 			
 		}
