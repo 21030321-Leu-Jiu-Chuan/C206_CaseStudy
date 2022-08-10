@@ -1,4 +1,6 @@
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
@@ -21,6 +23,7 @@ public class C206_CaseStudy {
 
 		ArrayList<LunchBox> LunchBoxList = new ArrayList<LunchBox>();
 		ArrayList<MenuItem> MenuItemList = new ArrayList<MenuItem>();
+		ArrayList<OrderBill>BillList=new ArrayList<OrderBill>();
 
 		
 		LunchBoxList.add(new LunchBox("LB001", "Western", 30,"2022-09-09"));
@@ -76,7 +79,20 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == OPTION_Order_bill) {
-
+				C206_CaseStudy.billMenu();
+				int order_bill_option=Helper.readInt("Enter option to select service type >");
+				if(order_bill_option==1) {
+					C206_CaseStudy.addOrdersBill(LunchBoxList, BillList);	
+				}
+				else if(order_bill_option==2) {
+					C206_CaseStudy.viewOrderBill(BillList);
+				}
+				else if(order_bill_option==3) {
+					C206_CaseStudy.deleteOrderBill(BillList);
+				}
+				else {
+					System.out.println("Invalid service");
+				}
 			} else if (option == OPTION_Account) {
 				C206_CaseStudy.Account_menu();
 				int account_option = Helper.readInt("Enter option to select service type > ");
@@ -168,7 +184,6 @@ public class C206_CaseStudy {
 		MenuItem MI = new MenuItem(id, description, category, Price);
 		return MI;
 	}
-
 	public static void addMenuItem(ArrayList<MenuItem> MenuItemList, MenuItem MI) {
 		MenuItemList.add(MI);
 	}
@@ -262,6 +277,54 @@ public class C206_CaseStudy {
 	}
 	}
 	// ================================= Option 3 Order Bill =================================
+	public static void billMenu() {
+		System.out.println("1. Add Order Bill");
+		System.out.println("2. View Order Bill");
+		System.out.println("3. Delete Order Bill");
+	}
+	public static void addOrdersBill(ArrayList<LunchBox>LunchBoxList,ArrayList<OrderBill>BillLists) {
+		double price=7;
+		double total=0;
+		String billID = Helper.readString("Enter Order Bill ID > ");
+		String lunchboxID=Helper.readString("Enter Lunch Box to bill >");
+		String dueDate=Helper.readString("Enter Due Date for Bill >");
+		for(LunchBox a:LunchBoxList) {
+			if(lunchboxID.equalsIgnoreCase(a.getLunch_box_id())) {
+				total=a.getAmount_of_order()*price;
+				BillLists.add(new OrderBill(lunchboxID,billID,total,dueDate));
+			}
+			else {
+				System.out.println("Enter a valid lunchboxID!");
+			}
+		}
+	}
+	public static void viewOrderBill(ArrayList<OrderBill>BillLists) {
+		String output="";
+		output+=String.format("%-20s %-20s %-20s %-20s\n", "Order Bill ID","Lunch Box ID","Total Price","Due Date");
+		for(OrderBill a:BillLists) {
+			output+=String.format("%-20s %-20s %-20.2f %-20s\n",a.getBillID(),a.getLunch_box_id(),a.getTotal(),a.getDuedate());
+		}
+		System.out.println(output);
+	}
+	public static void deleteOrderBill(ArrayList<OrderBill>BillLists) {
+		String ID=Helper.readString("Enter ID to delete >");
+		for (int i = 0; i < BillLists.size(); i++) {
+
+			if(BillLists.get(i).getBillID().equalsIgnoreCase(ID)) {
+
+			
+
+				BillLists.remove(i);
+				System.out.println("Remove Successfully");
+			}
+			 else {
+				System.out.println("Please Insert a valid Order Bill ID");
+			
+			}
+			
+	}
+	}
+	
 	// ================================= Option 4 Account (ADD)=================================
 	public static void Account_menu() {
 		System.out.println("1. Add User Account");
