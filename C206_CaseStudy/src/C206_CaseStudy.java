@@ -20,6 +20,11 @@ public class C206_CaseStudy {
 		ArrayList<LunchBox> LunchBoxList = new ArrayList<LunchBox>();
 		ArrayList<MenuItem> MenuItemList = new ArrayList<MenuItem>();
 		ArrayList<Account> AccountList = new ArrayList<Account>();
+		
+		
+		MenuItemList.add(new MenuItem("M0001", "Chicken Rice", "Asian", 3.00));
+		MenuItemList.add(new MenuItem("M0002", "Mee Goreng", "Asian", 3.00));
+		MenuItemList.add(new MenuItem("M0003", "Pizza", "Western", 4.00));
 
 		int option = -1;
 
@@ -121,8 +126,7 @@ public class C206_CaseStudy {
 		Helper.line(80, "-");
 	}
 
-	// ================================= Option 1 Menu item
-	// =================================
+	// ================================= Option 1 Menu item	 =================================
 	public static void Menu_item_menu() {
 		System.out.println("1. View Menu item");
 		System.out.println("2. Add Menu item");
@@ -135,8 +139,7 @@ public class C206_CaseStudy {
 		System.out.println("3. Vegetarian Cuisine");
 	}
 
-	// ================================= Option 1 Menu item (View)
-	// =================================
+	// ================================= Option 1 Menu item (View) =================================
 	public static String retrieveAllMenuItem(ArrayList<MenuItem> MenuItemList) {
 		String output = "";
 		for (int i = 0; i < MenuItemList.size(); i++) {
@@ -170,8 +173,7 @@ public class C206_CaseStudy {
 		MenuItemList.add(MI);
 	}
 
-	// ================================= Option 1 Menu item
-	// (Delete)=================================
+	// ================================= Option 1 Menu item (Delete)=================================
 
 	public static void deleteMenuItem(ArrayList<MenuItem> MenuItemList) {
 		String id = Helper.readString("Enter the ID you want to delete > ");
@@ -186,8 +188,7 @@ public class C206_CaseStudy {
 
 	}
 
-	// ================================= Option 2 LunchBox
-	// (ADD)=================================
+	// ================================= Option 2 LunchBox (ADD)=================================
 
 	public static void lunch_box_menu() {
 		System.out.println("1. Add lunch box Order");
@@ -219,8 +220,7 @@ public class C206_CaseStudy {
 
 	}
 
-	// ================================= Option 2 LunchBox
-	// (View)=================================
+	// ================================= Option 2 LunchBox (View)=================================
 	public static String retrieveAllLunchBoxOrder(ArrayList<LunchBox> LunchBoxList) {
 		String output = "";
 
@@ -240,8 +240,7 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 
-	// ================================= Option 2 LunchBox
-	// (Delete)=================================
+	// ================================= Option 2 LunchBox (Delete)=================================
 	public static void deleteLunchBoxOrder(ArrayList<LunchBox> LunchBoxList) {
 
 		String deleteID = Helper.readString("Enter the Lunch Box ID you want to delete>");
@@ -257,10 +256,8 @@ public class C206_CaseStudy {
 		}
 	}
 
-	// ================================= Option 3 Order Bill
-	// =================================
-	// ================================= Option 4 Account (ADD)
-	// =================================
+	// ================================= Option 3 Order Bill=================================
+	// ================================= Option 4 Account (ADD) =================================
 	public static void Account_menu() {
 		System.out.println("1. Add User Account");
 		System.out.println("2. View User Account");
@@ -283,8 +280,7 @@ public class C206_CaseStudy {
 
 	}
 
-	// ================================= Option 4 Account (VIEW)
-	// =================================
+	// ================================= Option 4 Account (VIEW) =================================
 	public static String retrieveUserAccount(ArrayList<Account> AccountList) {
 		String output = "";
 
@@ -303,8 +299,7 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 
-	// ================================= Option 4 Account (DELETE)
-	// =================================
+	// ================================= Option 4 Account (DELETE) =================================
 	public static void deleteUserAccount(ArrayList<Account> AccountList) {
 
 		String deleteID = Helper.readString("Enter the User Account ID you want to delete>");
@@ -319,7 +314,6 @@ public class C206_CaseStudy {
 
 		}
 	}
-	// ================================= Option 5 Monthly Menu
-	// =================================
+	// ================================= Option 5 Monthly Menu =================================
 
 }
