@@ -407,7 +407,7 @@ public class C206_CaseStudy {
 
 		String deleteID = Helper.readString("Enter the User Account ID you want to delete>");
 		for (int i = 0; i < AccountList.size(); i++) {
-			if (AccountList.get(i).getAcc_id() == deleteID) {
+			if (AccountList.get(i).getAcc_id().equalsIgnoreCase(deleteID)) {
 				AccountList.remove(i);
 				System.out.println("Remove Successfully");
 
@@ -415,6 +415,29 @@ public class C206_CaseStudy {
 				System.out.println("Please enter a valid User Account ID");
 			}
 
+		}
+	}
+	public static boolean doDeleteAccount(ArrayList<Account> AccountList, String x) {
+		boolean deleted = false;
+		
+		for(int i = 0 ; i < AccountList.size();i++) {
+			String deleteID = AccountList.get(i).getAcc_id();
+			if(deleteID.equalsIgnoreCase(x) && AccountList.get(i).getAcc_id().equalsIgnoreCase(x)) {
+				AccountList.remove(i);
+				deleted = true;
+			}
+		}
+		return deleted;
+	}
+	public static void DeleteAccount(ArrayList<Account> AccountList) {
+		C206_CaseStudy.viewUserAccount(AccountList);
+		String deleteID = Helper.readString("Enter the ID you want to delete > ");
+		Boolean deleted = doDeleteAccount(AccountList, deleteID);
+		if(deleted == false) {
+			System.out.println("Invalid");
+		}
+		else {
+			System.out.println("Account "+deleteID+" Deleted");
 		}
 	}
 	// ================================= Option 5 Monthly Menu =================================

@@ -21,6 +21,12 @@ public class C206_CaseStudyTest {
 	
 	private ArrayList<LunchBox> LunchBoxList;
 	
+	//==============Account Test=================
+	private Account acc1;
+	private Account acc2;
+	
+	private ArrayList<Account> AccountList;
+	
 	public C206_CaseStudyTest() {
 		super();
 	}
@@ -36,9 +42,12 @@ public class C206_CaseStudyTest {
 		lb1 = new LunchBox("LB001", "Western", 40,"2022-09-09");
 		lb2 = new LunchBox("LB002", "Asian", 20,"2022-09-09");
 		
+		acc1 = new Account("ACC001", "Peter", "student");
+		acc2 = new Account("ACC002", "Mary", "student");
+		
 		MenuItemList = new ArrayList<MenuItem>();
 		LunchBoxList=new ArrayList<LunchBox>() ;
-		
+		AccountList=new ArrayList<Account>();
 
 		
 	}
@@ -166,7 +175,63 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that ViewAllunchBoxOrderlist", testOutput, allLunchBoxOrder);
 		
 	}
-	
+	@Test
+	public void testAddAccount() { 
+		assertNotNull("Test if there is valid Account arraylist to add to", AccountList);
+		
+		C206_CaseStudy.insertAccount(AccountList, acc1);
+		assertEquals("Test if that Account arrayList size is 1?", 1, AccountList.size());
+		
+		assertSame("Test that Accountm is added same as 1st item of the list?",acc1,AccountList.get(0));
+		
+		C206_CaseStudy.insertAccount(AccountList, acc2);
+		assertEquals("Test if that Account arrayList size is 2?", 2, AccountList.size());
+		assertSame("Test that Account is added same as 2nd item of the list?",acc2,AccountList.get(1));
+
+	}
+	@Test
+	public void testRetrieveAllAccount() {
+		// Item list is not null, so that can add a new item
+		assertNotNull("Test if there is valid Account arraylist to add to", AccountList);
+		
+		//test if the list of Account retrieved from the C206_CaseStudy is empty
+		String allAccount = C206_CaseStudy.retrieveUserAccount(AccountList);
+		String testoutput = "";
+		assertEquals("CheckAccountList",testoutput,allAccount );
+		
+		
+		//Given an empty list, after adding 2 items, test if the size of the list is 2
+		C206_CaseStudy.insertAccount(AccountList, acc1);
+		C206_CaseStudy.insertAccount(AccountList, acc2);
+		assertEquals("Test if that Account arrayList size is 2?", 2, AccountList.size());
+		
+		//test if the expected output string same as the list of Account retrieved from the C206_CaseStudy
+		
+		allAccount = C206_CaseStudy.retrieveUserAccount(AccountList);
+		
+		testoutput += String.format("%-20s %-20s %-20.2f\n", "ACC001", "Peter", "student");
+		testoutput += String.format("%-20s %-20s %-20.2f\n", "ACC002", "Mary", "student");
+		
+		assertEquals("Check that Account", testoutput, allAccount);
+	}
+	@Test
+	public void DeleteAccount() {
+		// Item list is not null, so that can add a new item
+		assertNotNull("Test if there is valid Account arraylist to add to", AccountList);
+		
+		//Given an empty list, after adding 2 items, test if the size of the list is 2 
+		C206_CaseStudy.insertAccount(AccountList, acc1);
+		C206_CaseStudy.insertAccount(AccountList, acc2);
+		assertEquals("Test if that Account arrayList size is 2?", 2, AccountList.size());
+		
+		//Given that the size of the list is 2, after removing one 1 item, the size of the list is 1
+		C206_CaseStudy.doDeleteAccount(AccountList, "ACC001");
+		assertEquals("Check that the arraylist is 1", 1 , AccountList.size());
+		
+		//Given that the size of the list is 1, after removing one 1 item, the size of the list is 0
+		C206_CaseStudy.doDeleteAccount(AccountList, "ACC002");
+		assertEquals("Check that the arraylist is 0", 0, AccountList.size());
+	}
 	
 	
 	
@@ -180,6 +245,10 @@ public class C206_CaseStudyTest {
 		lb1=null;
 		lb2=null;
 		LunchBoxList = null;
+		
+		acc1 = null;
+		acc2 = null;
+		AccountList = null;
 	}
 
 
