@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /*
  * I declare that this code was written by me. 
  * I do not copy or allow others to copy my code. 
@@ -29,6 +31,13 @@ public class LunchBox {
 		this.date=date;
 		//this.price=price;
 	}
+	
+
+
+	public LunchBox(String lunch_box_id) {
+		this.lunch_box_id = lunch_box_id;
+	}
+
 
 
 	public String getLunch_box_id() {
@@ -82,9 +91,13 @@ public class LunchBox {
 
 	public String toString(){
 		String output = super.toString();
-		output=String.format("%-20s %-20s %-20d %-20s", lunch_box_id , description,amount_of_order,date);
+		output=String.format("%-20s %-20s %-20d %-20s", lunch_box_id ,description,amount_of_order,date);
 		return output;
 	}
+
+
+	
+	
 
 	
 }

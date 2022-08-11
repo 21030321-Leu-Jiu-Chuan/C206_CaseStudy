@@ -1,11 +1,13 @@
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 public class C206_CaseStudyTest {
+
 	//========Menu Item Test===========
 	private MenuItem MI1;
 	private MenuItem MI2;
@@ -13,11 +15,9 @@ public class C206_CaseStudyTest {
 	private ArrayList<MenuItem> MenuItemList;
 	
 	
-	//=================================
+	//==============LunchBox Test=================
 	private LunchBox lb1;
 	private LunchBox lb2;
-
-
 	
 	private ArrayList<LunchBox> LunchBoxList;
 	
@@ -25,8 +25,10 @@ public class C206_CaseStudyTest {
 		super();
 	}
 
+	
 	@Before
 	public void setUp() throws Exception {
+
 		MI1 = new MenuItem("M0001", "Chicken Rice", "Asian", 3.00);
 		MI2 = new MenuItem("M0002", "Mee Goreng", "Asian", 3.00);
 		MI3 = new MenuItem("M0003", "Pizza", "Western", 4.00);
@@ -37,26 +39,18 @@ public class C206_CaseStudyTest {
 		MenuItemList = new ArrayList<MenuItem>();
 		LunchBoxList=new ArrayList<LunchBox>() ;
 		
+
+		
 	}
 
-	@After
-	public void tearDown() throws Exception {
-		MI1 = null;
-		MI2 = null;
-		MI3 = null;
-		MenuItemList = null;
-		
-		lb1=null;
-		lb2=null;
-		LunchBoxList = null;
-	}
+
 
 	@Test
 	public void testAddMenuItem() { 
 		// Item list is not null, so that can add a new item
 		assertNotNull("Test if there is valid Menu Item arraylist to add to", MenuItemList);
 		
-		//Give	n an empty list, after adding 1 item, the size of the list is 1?
+		//Give an empty list, after adding 1 item, the size of the list is 1?
 		C206_CaseStudy.addMenuItem(MenuItemList, MI1);
 		assertEquals("Test if that Menu item arrayList size is 1?", 1, MenuItemList.size());
 		
@@ -74,13 +68,14 @@ public class C206_CaseStudyTest {
 		assertEquals("Test if that Menu item arrayList size is 3?", 3, MenuItemList.size());
 		assertSame("Test that Menu Item is added same as 3rd item of the list?",MI3,MenuItemList.get(2));
 	}
+
 	
 	@Test
 	public void testRetrieveAllMenuItem() {
 		// Item list is not null, so that can add a new item
 		assertNotNull("Test if there is valid Menu Item arraylist to add to", MenuItemList);
 		
-		//test if the list of Menu Item retrieved from the SourceCentre is empty
+		//test if the list of Menu Item retrieved from the C206_CaseStudy is empty
 		String allMenuItem = C206_CaseStudy.retrieveAllMenuItem(MenuItemList);
 		String testoutput = "";
 		assertEquals("Check MenuItemList",testoutput,allMenuItem );
@@ -91,10 +86,40 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addMenuItem(MenuItemList, MI2);
 		assertEquals("Test if that Menu item arrayList size is 2?", 2, MenuItemList.size());
 		
+		//test if the expected output string same as the list of Menu Item retrieved from the C206_CaseStudy
 		
+		allMenuItem = C206_CaseStudy.retrieveAllMenuItem(MenuItemList);
+		
+		testoutput = String.format("%-20s %-20s %-20s %-20.2f\n", "M0001", "Chicken Rice", "Asian", 3.00);
+		testoutput += String.format("%-20s %-20s %-20s %-20.2f\n", "M0002", "Mee Goreng", "Asian", 3.00);
+		
+		assertEquals("Check that MenuItem", testoutput, allMenuItem);
 	}
 	
 	
+	
+	@Test
+	public void DeleteMenuItem() {
+		// Item list is not null, so that can add a new item
+		assertNotNull("Test if there is valid Menu Item arraylist to add to", MenuItemList);
+		
+		//Given an empty list, after adding 2 items, test if the size of the list is 2 
+		C206_CaseStudy.addMenuItem(MenuItemList, MI1);
+		C206_CaseStudy.addMenuItem(MenuItemList, MI2);
+		assertEquals("Test if that Menu item arrayList size is 2?", 2, MenuItemList.size());
+		
+		//Given that the size of the list is 2, after removing one 1 item, the size of the list is 1
+		C206_CaseStudy.doDeleteMenuItem(MenuItemList, "M0001");
+		assertEquals("Check that the arraylist is 1", 1 , MenuItemList.size());
+		
+		//Given that the size of the list is 1, after removing one 1 item, the size of the list is 0
+		C206_CaseStudy.doDeleteMenuItem(MenuItemList, "M0002");
+		assertEquals("Check that the arraylist is 0", 0, MenuItemList.size());
+	}
+	
+	
+	
+	@Test
 	public void testAddLunchBoxOrder() {
 		//fail("Not yet implemented");
 		// write your code here 
@@ -111,6 +136,11 @@ public class C206_CaseStudyTest {
 		assertSame("Test that Camcorder is added same as 3rd item of the list?", lb2, LunchBoxList.get(1));
 		
 	}
+	
+	
+	
+	
+	
 	
 	@Test
 	public void testretrieveAllLunchBoxOrder() {
@@ -136,6 +166,22 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that ViewAllunchBoxOrderlist", testOutput, allLunchBoxOrder);
 		
 	}
+	
+	
+	
+	
+	@After
+	public void tearDown() throws Exception {
+		MI1 = null;
+		MI2 = null;
+		MI3 = null;
+		MenuItemList = null;
+		
+		lb1=null;
+		lb2=null;
+		LunchBoxList = null;
+	}
+
 
 
 }
