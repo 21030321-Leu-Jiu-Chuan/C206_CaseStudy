@@ -21,7 +21,7 @@ public class OrderBill extends LunchBox{
 	private String duedate;
 	public OrderBill(String lunch_box_id, String billID,double total, String duedate) {
 		super(lunch_box_id);
-		BillID = billID;
+		this.BillID = billID;
 		this.total = total;
 		this.duedate = duedate;
 	}

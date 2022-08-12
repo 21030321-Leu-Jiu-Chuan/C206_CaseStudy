@@ -30,6 +30,10 @@ public class C206_CaseStudy {
 
 		
 		LunchBoxList.add(new LunchBox("LB001", "Western", 30,"2022-09-09"));
+		LunchBoxList.add(new LunchBox("LB002", "Asian", 10,"2022-09-09"));
+		
+		
+		BillList.add(new OrderBill("LB001", "BL001", 50.00, "2022-10-10"));
 		
 		int option = -1;
 
@@ -70,7 +74,7 @@ public class C206_CaseStudy {
 					C206_CaseStudy.viewAllLunchBoxOrder(LunchBoxList);
 
 				} else if (lunchbox_item == 3) {
-					C206_CaseStudy.deleteLunchBoxOrder(LunchBoxList);
+					C206_CaseStudy.DeleteLunchBoxOrder(LunchBoxList);
 
 				} else {
 					System.out.println("Invalid type");
@@ -310,6 +314,29 @@ public class C206_CaseStudy {
 
 		}
 	}
+	public static boolean doDeleteLunchBoxOrder(ArrayList<LunchBox> lunchBoxList, String z) {
+		boolean deleted = false;
+		
+		for(int i = 0 ; i < lunchBoxList.size();i++) {
+			String id = lunchBoxList.get(i).getLunch_box_id();
+			if(id.equalsIgnoreCase(z) && lunchBoxList.get(i).getLunch_box_id().equalsIgnoreCase(z)) {
+				lunchBoxList.remove(i);
+				deleted = true;
+			}
+		}
+		return deleted;
+	}
+	public static void DeleteLunchBoxOrder(ArrayList<LunchBox> LunchBoxList) {
+		C206_CaseStudy.viewAllLunchBoxOrder(LunchBoxList);
+		String id = Helper.readString("Enter the ID you want to delete > ");
+		Boolean deleted = doDeleteLunchBoxOrder(LunchBoxList, id);
+		if(deleted == false) {
+			System.out.println("Invalid");
+		}
+		else {
+			System.out.println("Lunch Box:  "+id+" Deleted");
+		}
+	}
 
 	// ================================= Option 3 Order Bill=================================
 	public static void billMenu() {
@@ -317,22 +344,30 @@ public class C206_CaseStudy {
 		System.out.println("2. View Order Bill");
 		System.out.println("3. Delete Order Bill");
 	}
-	public static void addOrdersBill(ArrayList<LunchBox>LunchBoxList,ArrayList<OrderBill>BillLists) {
+	
+	
+	// ================================= Option 3 Order Bill (ADD)=================================
+	public static void addOrdersBill(ArrayList<LunchBox>LunchBoxList,ArrayList<OrderBill>BillLists ) {
 		double price=7;
 		double total=0;
 		String billID = Helper.readString("Enter Order Bill ID > ");
 		String lunchboxID=Helper.readString("Enter Lunch Box to bill >");
 		String dueDate=Helper.readString("Enter Due Date for Bill >");
-		for(LunchBox a:LunchBoxList) {
-			if(lunchboxID.equalsIgnoreCase(a.getLunch_box_id())) {
-				total=a.getAmount_of_order()*price;
+		for(int a = 0 ; a < LunchBoxList.size();a++){
+			if(LunchBoxList.get(a).getLunch_box_id().equalsIgnoreCase(lunchboxID)) {
+				total=LunchBoxList.get(a).getAmount_of_order() *price;
 				BillLists.add(new OrderBill(lunchboxID,billID,total,dueDate));
+				System.out.println("Added!");
 			}
-			else {
-				System.out.println("Enter a valid lunchboxID!");
-			}
+		
 		}
 	}
+	public static void insertOrderBill(ArrayList<OrderBill> BillLists, OrderBill OB) {
+
+		BillLists.add(OB);
+
+	}
+	// ================================= Option 3 Order Bill (View)=================================
 	public static void viewOrderBill(ArrayList<OrderBill>BillLists) {
 		String output="";
 		output+=String.format("%-20s %-20s %-20s %-20s\n", "Order Bill ID","Lunch Box ID","Total Price","Due Date");
@@ -341,6 +376,10 @@ public class C206_CaseStudy {
 		}
 		System.out.println(output);
 	}
+	
+	
+	
+	// ================================= Option 3 Order Bill (Delete)=================================
 	public static void deleteOrderBill(ArrayList<OrderBill>BillLists) {
 		String ID=Helper.readString("Enter ID to delete >");
 		for (int i = 0; i < BillLists.size(); i++) {
@@ -348,7 +387,6 @@ public class C206_CaseStudy {
 			if(BillLists.get(i).getBillID().equalsIgnoreCase(ID)) {
 
 			
-
 				BillLists.remove(i);
 				System.out.println("Remove Successfully");
 			}
