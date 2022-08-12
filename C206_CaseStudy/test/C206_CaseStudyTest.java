@@ -274,19 +274,65 @@ public class C206_CaseStudyTest {
 		assertNotNull("Test if there is valid Lunch Orders arraylist to add to", BillList);
 		
 		//Give an empty list, after adding 1 item, the size of the list is 1?
+		C206_CaseStudy.insertOrderBill(BillList, OB1);
+		assertEquals("Test if that Bill arrayList size is 1?", 1, BillList.size());
 		//C206_CaseStudy.addOrdersBill(LunchBoxList, BillList);
 		//assertEquals("Test if that Order Bill arrayList size is 1?", 1, MenuItemList.size());
 		
 		//The item just added is as same as the first item of the list
 		//assertSame("Test that Menu Item is added same as 1st item of the list?",MI1,MenuItemList.get(0));
+		assertSame("Test that OrderBill is added same as 1st item of the list?",OB1,BillList.get(0));
 		
 		// If add another item. The size of the list is 2?
 		//C206_CaseStudy.addMenuItem(MenuItemList, MI2);
 		//assertEquals("Test if that Menu item arrayList size is 2?", 2, MenuItemList.size());
 		//assertSame("Test that Menu Item is added same as 2nd item of the list?",MI2,MenuItemList.get(1));
+		C206_CaseStudy.insertOrderBill(BillList, OB2);
+		assertEquals("Test if that Bill arrayList size is 2?", 2, BillList.size());
+		assertSame("Test that Bill is added same as 2nd item of the list?",OB2,BillList.get(1));
+
 		
 	}
+	public void testretrieveAllOrderBill() {
+		// Test if Item list is not null but empty, so that can add a new item
+		assertNotNull("Test if there is valid Bill arraylist to add to", BillList);
+		
+		//test if the list of OrderBill retrieved from the SourceCentre is empty
+		String AllOrderBill= C206_CaseStudy.retrieveOrderBill(BillList);
+		String testOutput = "";
+		assertEquals("Check that ViewAllBilllist", testOutput, AllOrderBill);
+				
+		//Given an empty list, after adding 2 items, test if the size of the list is 2
+		C206_CaseStudy.insertOrderBill(BillList, OB1);
+		C206_CaseStudy.insertOrderBill(BillList, OB2);
+		assertEquals("Test if that Bill arraylist size is 2?", 2, BillList.size());
+		
+		//test if the expected output string same as the list of camcorders retrieved from the SourceCentre
+		AllOrderBill= C206_CaseStudy.retrieveOrderBill(BillList);
+		
+		testOutput = String.format("%-20s %-20s %-20d %-20s \n","LB001", "BL001", 50.00, "2022-10-10");
+		testOutput += String.format("%-20s %-20s %-20d %-20s \n","LB002", "BL002", 180.00, "2022-10-10");
 	
+		assertEquals("Check that ViewAllunchBoxOrderlist", testOutput, AllOrderBill);
+		
+	}
+	public void DeleteOrderBill() {
+		// Item list is not null, so that can add a new item
+		assertNotNull("Test if there is valid Bill arraylist to add to", BillList);
+		
+		//Given an empty list, after adding 2 items, test if the size of the list is 2 
+		C206_CaseStudy.insertOrderBill(BillList, OB1);
+		C206_CaseStudy.insertOrderBill(BillList, OB2);
+		assertEquals("Test if that Bill arrayList size is 2?", 2, BillList.size());
+		
+		//Given that the size of the list is 2, after removing one 1 item, the size of the list is 1
+		C206_CaseStudy.doDeleteOrderBill(BillList, "BL002");
+		assertEquals("Check that the arraylist is 1", 1 , BillList.size());
+		
+		//Given that the size of the list is 1, after removing one 1 item, the size of the list is 0
+		C206_CaseStudy.doDeleteOrderBill(BillList, "BL002");
+		assertEquals("Check that the arraylist is 0", 0,BillList.size());
+	}
 	
 	
 	

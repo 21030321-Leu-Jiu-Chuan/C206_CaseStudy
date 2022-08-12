@@ -1,7 +1,5 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'master' of https://github.com/21030321-Leu-Jiu-Chuan/C206_CaseStudy.git
+//github.com/21030321-Leu-Jiu-Chuan/C206_CaseStudy.git
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
@@ -87,7 +85,8 @@ public class C206_CaseStudy {
 				C206_CaseStudy.billMenu();
 				int order_bill_option=Helper.readInt("Enter option to select service type >");
 				if(order_bill_option==1) {
-					C206_CaseStudy.addOrdersBill(LunchBoxList, BillList);
+					OrderBill OB = addOrdersBill(LunchBoxList, BillList);
+					C206_CaseStudy.insertOrderBill(BillList, OB);
 				}
 				else if(order_bill_option==2) {
 					C206_CaseStudy.viewOrderBill(BillList);
@@ -366,7 +365,6 @@ public class C206_CaseStudy {
 			if(LunchBoxList.get(a).getLunch_box_id().equalsIgnoreCase(lunchboxID)) {
 				total=LunchBoxList.get(a).getAmount_of_order() *price;
 				obj=new OrderBill(lunchboxID,billID,total,dueDate);
-				BillLists.add(obj);
 				System.out.println("Added!");
 			}
 		}
@@ -391,15 +389,13 @@ public class C206_CaseStudy {
 	
 	
 	// ================================= Option 3 Order Bill (Delete)=================================
-	public static boolean deleteOrderBill(ArrayList<OrderBill>BillLists) {
+	public static void deleteOrderBill(ArrayList<OrderBill>BillLists) {
 		String ID=Helper.readString("Enter ID to delete >");
-		boolean hasdelete=false;
 		for (int i = 0; i < BillLists.size(); i++) {
 
 			if(BillLists.get(i).getBillID().equalsIgnoreCase(ID)) {
 				BillLists.remove(i);
-				hasdelete=true;
-				System.out.println("Remove Successfully");
+				System.out.println("Removed Successfully!");
 			}
 			 else {
 				System.out.println("Please Insert a valid Order Bill ID");
@@ -407,7 +403,28 @@ public class C206_CaseStudy {
 			}
 			
 	}
-		return hasdelete;
+	}
+	public static boolean doDeleteOrderBill(ArrayList<OrderBill> BillList, String z) {
+		boolean deleted = false;
+		
+		for(int i = 0 ; i < BillList.size();i++) {
+			String id = BillList.get(i).getBillID();
+			if(id.equalsIgnoreCase(z) && BillList.get(i).getBillID().equalsIgnoreCase(z)) {
+				BillList.remove(i);
+				deleted = true;
+			}
+		}
+		return deleted;
+	}
+	public static String retrieveOrderBill(ArrayList<OrderBill> BillList) {
+		String output = "";
+
+		for (int i = 0; i < BillList.size(); i++) {
+
+			output += String.format("%-62s\n", BillList.get(i).toString());
+
+		}
+		return output;
 	}
 
 	
@@ -550,8 +567,8 @@ public class C206_CaseStudy {
 	
 	
 	
->>>>>>> branch 'master' of https://github.com/21030321-Leu-Jiu-Chuan/C206_CaseStudy.git
-}
+
+
 	public static void CreateMonthlyMenu (ArrayList<MonthlyMenu> MonthlyMenuList, MonthlyMenu mm) {
 		MonthlyMenuList.add(mm);
 	}
