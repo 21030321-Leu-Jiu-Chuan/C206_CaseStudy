@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/21030321-Leu-Jiu-Chuan/C206_CaseStudy.git
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
@@ -350,6 +354,7 @@ public class C206_CaseStudy {
 	
 	
 	// ================================= Option 3 Order Bill (ADD)=================================
+
 	public static OrderBill addOrdersBill(ArrayList<LunchBox>LunchBoxList,ArrayList<OrderBill>BillLists ) {
 		double price=7;
 		double total=0;
@@ -367,6 +372,7 @@ public class C206_CaseStudy {
 		}
 		return obj;
 	}
+
 	public static void insertOrderBill(ArrayList<OrderBill> BillLists, OrderBill OB) {
 
 		BillLists.add(OB);
@@ -403,6 +409,8 @@ public class C206_CaseStudy {
 	}
 		return hasdelete;
 	}
+
+	
 	
 	// ================================= Option 4 Account (ADD) =================================
 	public static void Account_menu() {
@@ -501,6 +509,48 @@ public class C206_CaseStudy {
 		MonthlyMenu mm= new MonthlyMenu(Monthly_Menu_id, description, category, price );
 
 		return mm;
+<<<<<<< HEAD
+=======
+}
+	public static void CreateMonthlyMenu (ArrayList<MonthlyMenu> MonthlyMenuList, MonthlyMenu mm) {
+		MonthlyMenuList.add(mm);
+	}
+	// ================================= Option 5 Monthly Menu (View)=================================
+		public static String GetMonthlyMenu(ArrayList<MonthlyMenu> MonthlyMenuList) {
+			String output = "";
+
+			for (int i = 0; i < MonthlyMenuList.size(); i++) {
+
+				output += String.format("%-84s\n", MonthlyMenuList.get(i).toString());
+
+			}
+			return output;
+		}
+		
+		public static void ViewMonthlyMenu(ArrayList<MonthlyMenu> MonthlyMenuList) {
+			C206_CaseStudy.setHeader("Monthly Menu");
+			String output = String.format("%-20s %-20s %-20s %-20s\n", "ID", "Description", "Category", "Price");
+			output += GetMonthlyMenu(MonthlyMenuList);
+			System.out.println(output);
+		}	
+	// ================================= Option 5 Monthly Menu (Delete)=================================
+		public static void deleteMonthlyMenu (ArrayList<MonthlyMenu> MonthlyMenuList) {
+			String deleteMenu = Helper.readString("Enter the Monthly Menu ID you want to delete >");
+			for (int i = 0; i < MonthlyMenuList.size(); i++) {
+				if (MonthlyMenuList.get(i).getMonthlyID().equalsIgnoreCase(deleteMenu)) {
+					MonthlyMenuList.remove(i);
+					System.out.println("Delete Successfully");
+				}else {
+					System.out.println("Please Insert a valid Monthly Menu ID!");
+			}
+		}
+	}
+	
+	
+	
+	
+	
+>>>>>>> branch 'master' of https://github.com/21030321-Leu-Jiu-Chuan/C206_CaseStudy.git
 }
 	public static void CreateMonthlyMenu (ArrayList<MonthlyMenu> MonthlyMenuList, MonthlyMenu mm) {
 		MonthlyMenuList.add(mm);

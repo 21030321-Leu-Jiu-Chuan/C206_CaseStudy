@@ -81,7 +81,7 @@ public class MenuItem {
 	
 	public String toString(){
 		String output = super.toString();
-		output=String.format("%-20s %-20s %-20s %-20.2f\n",ID,menuDescription,Category,Price);
+		output=String.format("%-20s %-20s %-20s %-20.2f",ID,menuDescription,Category,Price);
 		return output;
 	}
 	
