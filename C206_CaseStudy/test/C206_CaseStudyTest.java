@@ -209,8 +209,8 @@ public class C206_CaseStudyTest {
 		
 		allAccount = C206_CaseStudy.retrieveUserAccount(AccountList);
 		
-		testoutput += String.format("%-20s %-20s %-20.2f\n", "ACC001", "Peter", "student");
-		testoutput += String.format("%-20s %-20s %-20.2f\n", "ACC002", "Mary", "student");
+		testoutput += String.format("%-20s %-20s %-20s\n", "ACC001", "Peter", "student");
+		testoutput += String.format("%-20s %-20s %-20s\n", "ACC002", "Mary", "student");
 		
 		assertEquals("Check that Account", testoutput, allAccount);
 	}

@@ -311,6 +311,10 @@ public class C206_CaseStudy {
 		}
 	}
 
+	// ================================= Option 2 LunchBox (Update)=================================
+	
+	
+	
 	// ================================= Option 3 Order Bill=================================
 	public static void billMenu() {
 		System.out.println("1. Add Order Bill");
@@ -389,7 +393,7 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < AccountList.size(); i++) {
 
-			output += String.format("%-84s\n", AccountList.get(i).toString());
+			output += String.format("%-62s\n", AccountList.get(i).toString());
 
 		}
 		return output;
