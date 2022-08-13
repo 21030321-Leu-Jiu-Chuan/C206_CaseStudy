@@ -76,7 +76,7 @@ public class MonthlyMenu {
 	
 	public String toString(){
 		String output = super.toString();
-		output=String.format("%-20s %-20s %-20s %-20.2f\n",Monthly_Menu_id,MonthlymenuDescription,Category,Price);
+		output=String.format("%-20s %-20s %-20s %-20.2f",Monthly_Menu_id,MonthlymenuDescription,Category,Price);
 		return output;
 	}
 }

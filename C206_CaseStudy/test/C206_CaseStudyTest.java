@@ -39,6 +39,11 @@ public class C206_CaseStudyTest {
 		super();
 	}
 
+	//=============== Monthly Menu Test================
+		private MonthlyMenu MM1;
+		private MonthlyMenu MM2;
+		
+		private ArrayList<MonthlyMenu> MonthlyMenuList;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -57,11 +62,14 @@ public class C206_CaseStudyTest {
 		acc1 = new Account("ACC001", "Peter", "student");
 		acc2 = new Account("ACC002", "Mary", "student");
 		
+		MM1 = new MonthlyMenu("MM001", "March", "Western", 60.00);
+		MM2 = new MonthlyMenu("MM002", "August", "Asian", 65.00);
 		
 		AccountList=new ArrayList<Account>();
 		MenuItemList = new ArrayList<MenuItem>();
 		LunchBoxList=new ArrayList<LunchBox>() ;
 		BillList = new ArrayList<OrderBill>();
+		MonthlyMenuList = new ArrayList<MonthlyMenu>();
 
 		
 	}
@@ -334,50 +342,99 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that the arraylist is 0", 0,BillList.size());
 	}
 	
-	
-	
-	
-	
+	//========================================== Test For Monthly Menu ===================================================
 	@Test
-	/*public void testretrieveAllLunchBoxOrder() {
-		// Test if Item list is not null but empty, so that can add a new item
-		assertNotNull("Test if there is valid Lunch Box Order arraylist to add to", LunchBoxList);
-		
-		//test if the list of camcorders retrieved from the SourceCentre is empty
-		String allLunchBoxOrder= C206_CaseStudy.retrieveAllLunchBoxOrder(LunchBoxList);
-		String testOutput = "";
-		assertEquals("Check that ViewAllLunchBoxOrderlist", testOutput, allLunchBoxOrder);
-				
-		//Given an empty list, after adding 2 items, test if the size of the list is 2
-		C206_CaseStudy.insertLunchBox(LunchBoxList, lb1);
-		C206_CaseStudy.insertLunchBox(LunchBoxList, lb2);
-		assertEquals("Test if that Camcorder arraylist size is 2?", 2, LunchBoxList.size());
-		
-		//test if the expected output string same as the list of camcorders retrieved from the SourceCentre
-		allLunchBoxOrder= C206_CaseStudy.retrieveAllLunchBoxOrder(LunchBoxList);
-
-		testOutput = String.format("%-20s %-20s %-20d %-20s \n","LB001","Western", 40,"2022-09-09");
-		testOutput += String.format("%-20s %-20s %-20d %-20s \n","LB002","Asian", 20,"2022-09-09");
-	
-		assertEquals("Check that ViewAllunchBoxOrderlist", testOutput, allLunchBoxOrder);
-		
-	}
-	
-	@Test
-	public void DeleteLunchBoxOrder() {
+	public void testCreateMonthlymenu() { 
 		// Item list is not null, so that can add a new item
-		assertNotNull("Test if there is valid LunchBox arraylist to add to", LunchBoxList);
+		assertNotNull("Test if there is valid Monthly Menu arraylist to add to", MonthlyMenuList);
 		
-		//Given an empty list, after adding 1 items, test if the size of the list is 1 
-		C206_CaseStudy.insertLunchBox(LunchBoxList, lb1);
-		assertEquals("Test if that LunchBox arrayList size is 1?", 1, LunchBoxList.size());
+		//Give an empty list, after adding 1 item, the size of the list is 1?
+		C206_CaseStudy.CreateMonthlyMenu(MonthlyMenuList, MM1);
+		assertEquals("Test if that Monthly Menu arrayList size is 1?", 1, MonthlyMenuList.size());
 		
-		//Given that the size of the list is 1, after removing one 1 item, the size of the list is 1
-		C206_CaseStudy.doDeleteLunchBoxOrder(LunchBoxList, "LB001");
-		assertEquals("Check that the arraylist is 0", 0 , LunchBoxList.size());
+		//The item just added is as same as the first item of the list
+		assertSame("Test that monthly menu is added same as 1st item of the list?",MM1,MonthlyMenuList.get(0));
 		
+		// If add another item. The size of the list is 2?
+		C206_CaseStudy.CreateMonthlyMenu(MonthlyMenuList, MM2);
+		assertEquals("Test if that Monthly Menu arrayList size is 2?", 2, MonthlyMenuList.size());
+		assertSame("Test that monthly menu is added same as 2nd item of the list?",MM2,MonthlyMenuList.get(1));
+	
 	}
-	*/
+	@Test
+	public void testViewMonthlyMenu() {
+		// Item list is not null, so that can add a new item
+		assertNotNull("Test if there is valid Monthly Menu arraylist to add to", MonthlyMenuList);
+		
+		//test if the list of Menu Item retrieved from the C206_CaseStudy is empty
+		String allMonthlyMenu = C206_CaseStudy.GetMonthlyMenu(MonthlyMenuList);
+		String testoutput = "";
+		assertEquals("Check MonthlyMenuList",testoutput,allMonthlyMenu );
+		
+		
+		//Given an empty list, after adding 2 items, test if the size of the list is 2
+		C206_CaseStudy.CreateMonthlyMenu(MonthlyMenuList, MM1);
+		C206_CaseStudy.CreateMonthlyMenu(MonthlyMenuList, MM2);
+		assertEquals("Test if that Monthly Menu arrayList size is 2?", 2, MonthlyMenuList.size());
+		
+		//test if the expected output string same as the list of Menu Item retrieved from the C206_CaseStudy
+		
+		allMonthlyMenu = C206_CaseStudy.GetMonthlyMenu(MonthlyMenuList);
+		
+		testoutput = String.format("%-20s %-20s %-20s %-20.2f\n", "MM001", "March", "Western", 60.00);
+		testoutput += String.format("%-20s %-20s %-20s %-20.2f\n", "MM002", "August", "Asian", 65.00);
+		
+		assertEquals("Check that MonthlyMenu", testoutput, allMonthlyMenu);
+	}
+	@Test
+	public void deleteMonthlyMenu() {
+		// Item list is not null, so that can add a new item
+		assertNotNull("Test if there is valid Monthly Menu arraylist to add to", MonthlyMenuList);
+		
+		//Given an empty list, after adding 2 items, test if the size of the list is 2 
+		C206_CaseStudy.CreateMonthlyMenu(MonthlyMenuList, MM1);
+		C206_CaseStudy.CreateMonthlyMenu(MonthlyMenuList, MM2);
+		assertEquals("Test if that Monthly Menu arrayList size is 2?", 2, MonthlyMenuList.size());
+		
+		//Given that the size of the list is 2, after removing one 1 item, the size of the list is 1
+		C206_CaseStudy.doDeleteMonthlyMenu(MonthlyMenuList, "MM001");
+		assertEquals("Check that the arraylist is 1", 1 , MonthlyMenuList.size());
+		
+		//Given that the size of the list is 1, after removing one 1 item, the size of the list is 0
+		C206_CaseStudy.doDeleteMonthlyMenu(MonthlyMenuList, "MM002");
+		assertEquals("Check that the arraylist is 0", 0, MonthlyMenuList.size());
+	}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
 	
 	@After
 	public void tearDown() throws Exception {
