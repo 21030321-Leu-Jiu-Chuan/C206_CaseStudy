@@ -301,6 +301,7 @@ public class C206_CaseStudyTest {
 
 		
 	}
+	
 	public void testretrieveAllOrderBill() {
 		// Test if Item list is not null but empty, so that can add a new item
 		assertNotNull("Test if there is valid Bill arraylist to add to", BillList);
@@ -318,12 +319,13 @@ public class C206_CaseStudyTest {
 		//test if the expected output string same as the list of camcorders retrieved from the SourceCentre
 		AllOrderBill= C206_CaseStudy.retrieveOrderBill(BillList);
 		
-		testOutput = String.format("%-20s %-20s %-20d %-20s \n","LB001", "BL001", 50.00, "2022-10-10");
-		testOutput += String.format("%-20s %-20s %-20d %-20s \n","LB002", "BL002", 180.00, "2022-10-10");
+		testOutput = String.format("%-20s %-20s %-20.2f %-20s \n","LB001", "BL001", 50.00, "2022-10-10");
+		testOutput += String.format("%-20s %-20s %-20.2f %-20s \n","LB002", "BL002", 180.00, "2022-10-10");
 	
 		assertEquals("Check that ViewAllunchBoxOrderlist", testOutput, AllOrderBill);
 		
 	}
+	@Test
 	public void DeleteOrderBill() {
 		// Item list is not null, so that can add a new item
 		assertNotNull("Test if there is valid Bill arraylist to add to", BillList);
@@ -338,7 +340,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that the arraylist is 1", 1 , BillList.size());
 		
 		//Given that the size of the list is 1, after removing one 1 item, the size of the list is 0
-		C206_CaseStudy.doDeleteOrderBill(BillList, "BL002");
+		C206_CaseStudy.doDeleteOrderBill(BillList, "BL001");
 		assertEquals("Check that the arraylist is 0", 0,BillList.size());
 	}
 	
@@ -406,34 +408,7 @@ public class C206_CaseStudyTest {
 	}
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
 	
 	
 	@After
